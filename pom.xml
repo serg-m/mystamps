@@ -70,6 +70,7 @@
 		<coveralls.plugin.version>2.2.0</coveralls.plugin.version>
 		<javadoc.plugin.version>2.10.1</javadoc.plugin.version>
 		<enforcer.plugin.version>1.3.1</enforcer.plugin.version>
+		<pitest.plugin.version>0.25</pitest.plugin.version>
 		
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -515,7 +516,8 @@
 					<target>${java.version}</target>
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
-					<debug>false</debug>
+					<verbose>true</verbose>
+					<debug>true</debug>
 				</configuration>
 			</plugin>
 			
@@ -803,6 +805,23 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>${pitest.plugin.version}</version>
+				<configuration>
+					<inScopeClasses>
+						<param>ru.mystamps.web.*</param>
+					</inScopeClasses>
+					<targetClasses>
+						<param>ru.mystamps.web.service.*</param>
+					</targetClasses>
+					<targetTests>
+						<param>ru.mystamps.web.service.*</param>
+					</targetTests>
+				</configuration>
 			</plugin>
 			
 		</plugins>
