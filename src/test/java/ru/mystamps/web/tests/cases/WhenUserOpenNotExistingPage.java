@@ -39,26 +39,31 @@ public class WhenUserOpenNotExistingPage extends WhenUserAtAnyPage<NotFoundError
 	
 	@BeforeClass
 	public void setUp() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".setUp()");
 		page.open();
 	}
 	
 	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldHaveStandardStructure()");
 		checkStandardStructure();
 	}
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsErrorMessage() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldExistsErrorMessage()");
 		assertThat(page.getErrorMessage()).isEqualTo(tr("t_404_description", "\n"));
 	}
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsErrorCode() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldExistsErrorCode()");
 		assertThat(page.getErrorCode()).isEqualTo("404");
 	}
 	
 	@Test(groups = "logic", dependsOnGroups = "std", enabled = false)
 	public void incidentShouldBeLoggedToDatabase() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".incidentShouldBeLoggedToDatabase()");
 		// TODO: check suspicious_activities table (#99)
 	}
 	

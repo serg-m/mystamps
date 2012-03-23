@@ -34,11 +34,13 @@ public class WhenUserRecoveryPassword extends WhenUserAtAnyPage<RestorePasswordP
 	
 	@BeforeClass
 	public void setUp() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".setUp()");
 		page.open();
 	}
 	
 	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldHaveStandardStructure()");
 		checkStandardStructure();
 	}
 	

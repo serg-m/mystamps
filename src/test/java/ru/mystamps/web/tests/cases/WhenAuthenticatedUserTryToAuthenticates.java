@@ -45,23 +45,27 @@ public class WhenAuthenticatedUserTryToAuthenticates
 	
 	@BeforeClass
 	public void setUp() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".setUp()");
 		page.open();
 		page.login(validUserLogin, validUserPassword);
 	}
 	
 	@AfterClass
 	public void tearDown() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".tearDown()");
 		page.logout();
 	}
 	
 	@Test(groups = "logic")
 	public void messageShouldBeShown() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".messageShouldBeShown()");
 		assertThat(page.textPresent(tr("t_already_authenticated"))).isTrue();
 
 	}
 	
 	@Test(groups = "misc")
 	public void formWithLegendShouldBeAbsent() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".formWithLegendShouldBeAbsent()");
 		assertThat(page.authenticationFormExists()).isFalse();
 		assertThat(page.getFormHints()).isEmpty();
 	}

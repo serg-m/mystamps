@@ -36,21 +36,25 @@ public class WhenUserAtIndexPage extends WhenUserAtAnyPage<IndexSitePage> {
 	
 	@BeforeClass
 	public void setUp() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".setUp()");
 		page.open();
 	}
 	
 	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldHaveStandardStructure()");
 		checkStandardStructure();
 	}
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsWelcomeText() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldExistsWelcomeText()");
 		assertThat(page.textPresent(tr("t_you_may"))).isTrue();
 	}
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsLinkForPasswordRecovery() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldExistsLinkForPasswordRecovery()");
 		assertThat(page.linkWithLabelExists(tr("t_recover_forget_password")))
 			//.overridingErrorMessage("should exists link to password restoration page")
 			.isTrue();
@@ -58,6 +62,7 @@ public class WhenUserAtIndexPage extends WhenUserAtAnyPage<IndexSitePage> {
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsLinkForAddingSeries() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldExistsLinkForAddingSeries()");
 		assertThat(page.linkWithLabelExists(tr("t_add_series")))
 			//.overridingErrorMessage("should exists link to page for adding series of stamps")
 			.isTrue();
@@ -65,6 +70,7 @@ public class WhenUserAtIndexPage extends WhenUserAtAnyPage<IndexSitePage> {
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsLinkForAddingCountries() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldExistsLinkForAddingCountries()");
 		assertThat(page.linkWithLabelExists(tr("t_add_country")))
 			//.overridingErrorMessage("should exists link to page for adding countries")
 			.isTrue();

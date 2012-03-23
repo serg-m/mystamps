@@ -56,16 +56,19 @@ public class WhenUserAddSeries extends WhenUserAtAnyPageWithForm<AddSeriesPage> 
 	
 	@BeforeClass
 	public void setUp() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".setUp()");
 		page.open();
 	}
 	
 	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldHaveStandardStructure()");
 		checkStandardStructure();
 	}
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void issueYearFieldShouldHaveOptionsForRangeFrom1840ToCurrentYear() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".issueYearFieldShouldHaveOptionsForRangeFrom1840ToCurrentYear()");
 		assertThat(page.getYearFieldValues()).isEqualTo(EXPECTED_YEARS);
 	}
 	

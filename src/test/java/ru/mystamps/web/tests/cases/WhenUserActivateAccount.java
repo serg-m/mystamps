@@ -59,16 +59,19 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@BeforeMethod
 	public void openPage() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".openPage()");
 		page.open();
 	}
 	
 	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldHaveStandardStructure()");
 		checkStandardStructure();
 	}
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void activationKeyShouldBeAutoFilledFromURL() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".activationKeyShouldBeAutoFilledFromURL()");
 		final String key = "7777744444";
 		final String url = Url.ACTIVATE_ACCOUNT_PAGE_WITH_KEY.replace("{key}", key);
 		
@@ -78,6 +81,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void loginAndPasswordShouldBeDifferent() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".loginAndPasswordShouldBeDifferent()");
 		page.activateAccount("admin", null, "admin", null, null);
 		
 		assertThat(page)
@@ -87,6 +91,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void passwordAndConfirmationShouldMatch() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".passwordAndConfirmationShouldMatch()");
 		page.activateAccount(null, null, "password123", "password321", null);
 		
 		assertThat(page)
@@ -96,6 +101,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void loginShouldNotBeTooShort() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".loginShouldNotBeTooShort()");
 		page.activateAccount("a", null, null, null, null);
 		
 		assertThat(page)
@@ -105,6 +111,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "valid", dependsOnGroups = "std")
 	public void mostShortLoginShouldBeAccepted() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".mostShortLoginShouldBeAccepted()");
 		page.activateAccount("ab", null, null, null, null);
 		
 		assertThat(page).field("login").hasNoError();
@@ -112,6 +119,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void loginShouldNotBeTooLong() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".loginShouldNotBeTooLong()");
 		page.activateAccount("abcde12345fghkl6", null, null, null, null);
 		
 		assertThat(page)
@@ -121,6 +129,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "valid", dependsOnGroups = "std")
 	public void mostLongLoginShouldBeAccepted() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".mostLongLoginShouldBeAccepted()");
 		page.activateAccount("abcde1234567890", null, null, null, null);
 		
 		assertThat(page).field("login").hasNoError();
@@ -128,6 +137,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "valid", dependsOnGroups = "std")
 	public void loginWithAllowedCharactersShouldBeAccepted() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".loginWithAllowedCharactersShouldBeAccepted()");
 		page.activateAccount("t3s7-T_E_S_T", null, null, null, null);
 		
 		assertThat(page).field("login").hasNoError();
@@ -135,6 +145,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void loginWithForbiddenCharactersShouldBeRejected() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".loginWithForbiddenCharactersShouldBeRejected()");
 		page.activateAccount("'t@$t'", null, null, null, null);
 		
 		assertThat(page)
@@ -144,6 +155,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void loginShouldBeUnique() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".loginShouldBeUnique()");
 		page.activateAccount(validUserLogin, null, null, null, null);
 		
 		assertThat(page)
@@ -153,6 +165,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void nameShouldNotBeTooLong() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".nameShouldNotBeTooLong()");
 		page.activateAccount(null, StringUtils.repeat("0", NAME_MAX_LENGTH + 1), null, null, null);
 		
 		assertThat(page)
@@ -165,6 +178,8 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 		final String name,
 		final Object whatever) {
 		
+		System.out.println("CALL " + getClass().getSimpleName() + ".nameWithAllowedCharactersShouldBeAccepted()");
+		
 		page.activateAccount(null, name, null, null, null);
 		
 		assertThat(page).field("name").hasNoError();
@@ -172,6 +187,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void nameWithForbiddenCharactersShouldBeRejected() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".nameWithForbiddenCharactersShouldBeRejected()");
 		page.activateAccount(null, "M@st3r_", null, null, null);
 		
 		assertThat(page)
@@ -181,6 +197,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void nameShouldNotStartsFromHyphen() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".nameShouldNotStartsFromHyphen()");
 		page.activateAccount(null, "-test", null, null, null);
 		
 		assertThat(page)
@@ -190,6 +207,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void nameShouldNotEndsWithHyphen() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".nameShouldNotEndsWithHyphen()");
 		page.activateAccount(null, "test-", null, null, null);
 		
 		assertThat(page)
@@ -199,6 +217,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void nameShouldBeStripedFromLeadingAndTrailingSpaces() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".nameShouldBeStripedFromLeadingAndTrailingSpaces()");
 		page.activateAccount(null, " test ", null, null, null);
 		
 		assertThat(page).field("name").hasValue("test");
@@ -206,6 +225,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void passwordShouldNotBeTooShort() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".passwordShouldNotBeTooShort()");
 		page.activateAccount(null, null, "123", null, null);
 		
 		assertThat(page)
@@ -215,6 +235,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "valid", dependsOnGroups = "std")
 	public void mostShortPasswordShouldBeAccepted() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".mostShortPasswordShouldBeAccepted()");
 		page.activateAccount(null, null, "1234", null, null);
 		
 		assertThat(page).field("password").hasNoError();
@@ -222,6 +243,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "valid", dependsOnGroups = "std")
 	public void passwordWithAllowedCharactersShouldBeAccepted() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".passwordWithAllowedCharactersShouldBeAccepted()");
 		page.activateAccount(null, null, "t3s7-T_E_S_T", null, null);
 		
 		assertThat(page).field("password").hasNoError();
@@ -229,6 +251,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void passwordWithForbiddenCharactersShouldBeRejected() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".passwordWithForbiddenCharactersShouldBeRejected()");
 		page.activateAccount(null, null, "'t@$t'", null, null);
 		
 		assertThat(page)
@@ -238,6 +261,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void activationKeyShouldNotBeTooShort() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".activationKeyShouldNotBeTooShort()");
 		page.activateAccount(null, null, null, null, "12345");
 		
 		assertThat(page)
@@ -247,6 +271,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void activationKeyShouldNotBeTooLong() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".activationKeyShouldNotBeTooLong()");
 		page.activateAccount(null, null, null, null, "1234567890123");
 		
 		assertThat(page)
@@ -256,6 +281,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void activationKeyWithForbiddenCharactersShouldBeRejected() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".activationKeyWithForbiddenCharactersShouldBeRejected()");
 		page.activateAccount(null, null, null, null, "A123=+TEST");
 		
 		assertThat(page)
@@ -265,6 +291,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void wrongActivationKeyShouldBeRejected() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".wrongActivationKeyShouldBeRejected()");
 		page.activateAccount(null, null, null, null, StringUtils.repeat("1", ACT_KEY_LENGTH));
 		
 		assertThat(page)
@@ -274,6 +301,7 @@ public class WhenUserActivateAccount extends WhenUserAtAnyPageWithForm<ActivateA
 	
 	@Test(groups = "logic", dependsOnGroups = { "std", "invalid", "valid", "misc" })
 	public void afterActivationShouldExistsMessageWithLinkForAuthentication() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".afterActivationShouldExistsMessageWithLinkForAuthentication()");
 		page.activateAccount(
 			"1st-test-login",
 			"Test Suite",

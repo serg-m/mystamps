@@ -42,6 +42,7 @@ public class WhenUserLogsOut extends WhenUserAtAnyPage<LogoutAccountPage> {
 	
 	@Test(groups = "logic")
 	public void shouldRedirectAndClearSession() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldRedirectAndClearSession()");
 		page.login(validUserLogin, validUserPassword);
 		page.open();
 		

@@ -51,16 +51,19 @@ public class WhenUserAddCountry extends WhenUserAtAnyPageWithForm<AddCountryPage
 	
 	@BeforeMethod
 	public void openPage() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".openPage()");
 		page.open();
 	}
 	
 	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldHaveStandardStructure()");
 		checkStandardStructure();
 	}
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void countryNameShouldNotBeTooShort() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".countryNameShouldNotBeTooShort()");
 		page.addCountry("ee");
 		
 		assertThat(page)
@@ -70,6 +73,7 @@ public class WhenUserAddCountry extends WhenUserAtAnyPageWithForm<AddCountryPage
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void countryNameShouldNotBeTooLong() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".countryNameShouldNotBeTooLong()");
 		page.addCountry(StringUtils.repeat("e", COUNTRY_NAME_MAX_LENGTH + 1));
 		
 		assertThat(page)
@@ -79,6 +83,7 @@ public class WhenUserAddCountry extends WhenUserAtAnyPageWithForm<AddCountryPage
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void countryNameShouldBeUnique() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".countryNameShouldBeUnique()");
 		page.addCountry(validCountryName);
 		
 		assertThat(page)
@@ -88,6 +93,7 @@ public class WhenUserAddCountry extends WhenUserAtAnyPageWithForm<AddCountryPage
 	
 	@Test(groups = "valid", dependsOnGroups = "std")
 	public void countryNameWithAllowedCharactersShouldBeAccepted() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".countryNameWithAllowedCharactersShouldBeAccepted()");
 		page.addCountry("Valid-Name Country");
 		
 		assertThat(page).field("country").hasNoError();
@@ -95,6 +101,7 @@ public class WhenUserAddCountry extends WhenUserAtAnyPageWithForm<AddCountryPage
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void countryNameWithForbiddenCharactersShouldBeRejected() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".countryNameWithForbiddenCharactersShouldBeRejected()");
 		page.addCountry("S0m3+CountryN_ame");
 		
 		assertThat(page)
@@ -104,6 +111,7 @@ public class WhenUserAddCountry extends WhenUserAtAnyPageWithForm<AddCountryPage
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void countryNameShouldNotStartsFromHyphen() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".countryNameShouldNotStartsFromHyphen()");
 		page.addCountry("-test");
 		
 		assertThat(page)
@@ -113,6 +121,7 @@ public class WhenUserAddCountry extends WhenUserAtAnyPageWithForm<AddCountryPage
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void countryNameShouldNotEndsWithHyphen() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".countryNameShouldNotEndsWithHyphen()");
 		page.addCountry("test-");
 		
 		assertThat(page)
@@ -122,6 +131,7 @@ public class WhenUserAddCountry extends WhenUserAtAnyPageWithForm<AddCountryPage
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void countryNameShouldBeStripedFromLeadingAndTrailingSpaces() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".countryNameShouldBeStripedFromLeadingAndTrailingSpaces()");
 		page.addCountry(" t3st ");
 		
 		assertThat(page).field("country").hasValue("t3st");
@@ -129,6 +139,7 @@ public class WhenUserAddCountry extends WhenUserAtAnyPageWithForm<AddCountryPage
 	
 	@Test(groups = "logic", dependsOnGroups = { "std", "invalid", "valid", "misc" })
 	public void shouldBeRedirectedToPageWithInfoAboutCountryAfterCreation() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldBeRedirectedToPageWithInfoAboutCountryAfterCreation()");
 		page.addCountry(TEST_COUNTRY_NAME);
 		
 		final String expectedUrl = Url.INFO_COUNTRY_PAGE.replace("{id}", "\\d+");
@@ -142,6 +153,7 @@ public class WhenUserAddCountry extends WhenUserAtAnyPageWithForm<AddCountryPage
 		dependsOnMethods = "shouldBeRedirectedToPageWithInfoAboutCountryAfterCreation"
 	)
 	public void countryShouldBeAvailableForChoosingAtPageWithSeries() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".countryShouldBeAvailableForChoosingAtPageWithSeries()");
 		page.open(Url.ADD_SERIES_PAGE);
 		
 		final AddSeriesPage seriesPage = new AddSeriesPage(WebDriverFactory.getDriver());

@@ -55,16 +55,19 @@ public class WhenUserAuthenticates extends WhenUserAtAnyPageWithForm<AuthAccount
 	
 	@BeforeMethod
 	public void openPage() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".openPage()");
 		page.open();
 	}
 	
 	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldHaveStandardStructure()");
 		checkStandardStructure();
 	}
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsMessageWithLinkAboutPasswordRecovery() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldExistsMessageWithLinkAboutPasswordRecovery()");
 		assertThat(page.getFormHints()).contains(stripHtmlTags(tr("t_if_you_forget_password")));
 		
 		assertThat(page.existsLinkTo(Url.RESTORE_PASSWORD_PAGE))
@@ -74,6 +77,7 @@ public class WhenUserAuthenticates extends WhenUserAtAnyPageWithForm<AuthAccount
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void emptyValuesShouldBeConsideredAsInvalidCredentials() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".emptyValuesShouldBeConsideredAsInvalidCredentials()");
 		page.authorizeUser("", "");
 		
 		assertThat(page.getFormError())
@@ -82,6 +86,7 @@ public class WhenUserAuthenticates extends WhenUserAtAnyPageWithForm<AuthAccount
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void invalidCredentialsShouldBeRejected() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".invalidCredentialsShouldBeRejected()");
 		page.authorizeUser(invalidUserLogin, invalidUserPassword);
 		
 		assertThat(page.getFormError())
@@ -90,6 +95,7 @@ public class WhenUserAuthenticates extends WhenUserAtAnyPageWithForm<AuthAccount
 	
 	@Test(groups = "logic", dependsOnGroups = "std")
 	public void validCredentialsShouldAuthenticateUserOnSite() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".validCredentialsShouldAuthenticateUserOnSite()");
 		page.authorizeUser(validUserLogin, validUserPassword);
 		
 		assertThat(page.getCurrentUrl())

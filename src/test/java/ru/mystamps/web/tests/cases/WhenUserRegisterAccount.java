@@ -43,16 +43,19 @@ public class WhenUserRegisterAccount extends WhenUserAtAnyPageWithForm<RegisterA
 	
 	@BeforeMethod
 	public void openPage() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".openPage()");
 		page.open();
 	}
 	
 	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldHaveStandardStructure()");
 		checkStandardStructure();
 	}
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsMessageWithLinkToAuthenticationPage() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldExistsMessageWithLinkToAuthenticationPage()");
 		assertThat(page.getFormHints()).contains(stripHtmlTags(tr("t_if_you_already_registered")));
 		
 		assertThat(page.existsLinkTo(Url.AUTHENTICATION_PAGE))
@@ -62,6 +65,7 @@ public class WhenUserRegisterAccount extends WhenUserAtAnyPageWithForm<RegisterA
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsMessageWithLinkAboutPasswordRecovery() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".shouldExistsMessageWithLinkAboutPasswordRecovery()");
 		assertThat(page.getFormHints()).contains(stripHtmlTags(tr("t_if_you_forget_password")));
 		
 		assertThat(page.existsLinkTo(Url.RESTORE_PASSWORD_PAGE))
@@ -71,6 +75,7 @@ public class WhenUserRegisterAccount extends WhenUserAtAnyPageWithForm<RegisterA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void emailShouldNotBeTooLong() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".emailShouldNotBeTooLong()");
 		page.registerUser(StringUtils.repeat("0", EMAIL_MAX_LENGTH) + "@mail.ru");
 		
 		assertThat(page)
@@ -80,6 +85,8 @@ public class WhenUserRegisterAccount extends WhenUserAtAnyPageWithForm<RegisterA
 	
 	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidEmails")
 	public void emailShouldBeValid(final String invalidEmail, final String expectedMessage) {
+		System.out.println("CALL " + getClass().getSimpleName() + ".emailShouldBeValid()");
+		
 		page.registerUser(invalidEmail);
 		
 		assertThat(page).field("email").hasError(expectedMessage);
@@ -87,6 +94,7 @@ public class WhenUserRegisterAccount extends WhenUserAtAnyPageWithForm<RegisterA
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
 	public void emailShouldBeStripedFromLeadingAndTrailingSpaces() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".emailShouldBeStripedFromLeadingAndTrailingSpaces()");
 		page.registerUser(" test ");
 		
 		assertThat(page).field("email").hasValue("test");
@@ -94,6 +102,7 @@ public class WhenUserRegisterAccount extends WhenUserAtAnyPageWithForm<RegisterA
 	
 	@Test(groups = "logic", dependsOnGroups = { "std", "invalid", "misc" })
 	public void successfulMessageShouldBeShownAfterRegistration() {
+		System.out.println("CALL " + getClass().getSimpleName() + ".successfulMessageShouldBeShownAfterRegistration()");
 		page.registerUser("coder@rock.home");
 		
 		assertThat(page.getCurrentUrl()).isEqualTo(Url.SUCCESSFUL_REGISTRATION_PAGE);
