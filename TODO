@@ -1,2 +1,3 @@
 - удалить testng.xml
 - удалить testng из зависимостей
+- включить pmd/cpd/cobertura/checkstyle/unit-tests
