@@ -1,0 +1,31 @@
+Registration
+	When Anonymous User Register Account
+	When User At Register Account Page
+
+Activation
+	When Anonymous User Activate Account
+	When User At Activate Account Page
+
+Login
+	When Anonymous User Authenticates
+	When User At Auth Page
+
+Logout
+	When User Logs Out
+
+Country
+	When User Add Country
+	When Anonymous User Add Country
+	When Anonymous User Open Not Existing Country Page
+
+Series
+	When User Add Series
+	When Anonymous User Add Series
+	When Anonymous User Open Not Existing Series Page
+
+Unsorted
+	When Anonymous User At Index Page
+	When Anonymous User At Unauthorized Page
+	When Anonymous User Open Not Existing Page
+	When User At Index Page
+
