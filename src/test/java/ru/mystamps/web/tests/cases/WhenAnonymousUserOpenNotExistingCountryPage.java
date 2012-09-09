@@ -21,7 +21,7 @@ import java.net.HttpURLConnection;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-import org.testng.annotations.Test;
+//import org.testng.annotations.Test;
 
 import ru.mystamps.web.tests.page.NotFoundErrorPage;
 import ru.mystamps.web.Url;
@@ -37,7 +37,7 @@ public class WhenAnonymousUserOpenNotExistingCountryPage
 		hasResponseServerCode(HttpURLConnection.HTTP_NOT_FOUND);
 	}
 	
-	@Test(groups = "logic")
+	//@Test(groups = "logic")
 	public void shouldShow404Page() {
 		String absentCountryId = "999";
 		page.open(Url.INFO_COUNTRY_PAGE.replace("{id}", absentCountryId));

@@ -25,9 +25,9 @@ import static ru.mystamps.web.tests.fest.AbstractPageWithFormAssert.assertThat;
 import static ru.mystamps.web.validation.ValidationRules.EMAIL_MAX_LENGTH;
 
 import org.apache.commons.lang3.StringUtils;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+//import org.testng.annotations.BeforeMethod;
+//import org.testng.annotations.DataProvider;
+//import org.testng.annotations.Test;
 
 import ru.mystamps.web.Url;
 import ru.mystamps.web.tests.page.RegisterAccountPage;
@@ -41,17 +41,17 @@ public class WhenAnonymousUserRegisterAccount
 		hasHeader(tr("t_registration_on_site"));
 	}
 	
-	@BeforeMethod
+	//@BeforeMethod
 	public void openPage() {
 		page.open();
 	}
 	
-	@Test(groups = "std")
+	//@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
 		checkStandardStructure();
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
+	//@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsMessageWithLinkToAuthenticationPage() {
 		assertThat(page.getFormHints()).contains(stripHtmlTags(tr("t_if_you_already_registered")));
 		
@@ -60,7 +60,7 @@ public class WhenAnonymousUserRegisterAccount
 			.isTrue();
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
+	//@Test(groups = "invalid", dependsOnGroups = "std")
 	public void emailShouldNotBeTooLong() {
 		page.registerUser(StringUtils.repeat("0", EMAIL_MAX_LENGTH) + "@mail.ru");
 		
@@ -69,21 +69,21 @@ public class WhenAnonymousUserRegisterAccount
 			.hasError(tr("value.too-long", EMAIL_MAX_LENGTH));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidEmails")
+	//@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidEmails")
 	public void emailShouldBeValid(String invalidEmail, String expectedMessage) {
 		page.registerUser(invalidEmail);
 		
 		assertThat(page).field("email").hasError(expectedMessage);
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
+	//@Test(groups = "misc", dependsOnGroups = "std")
 	public void emailShouldBeStripedFromLeadingAndTrailingSpaces() {
 		page.registerUser(" test ");
 		
 		assertThat(page).field("email").hasValue("test");
 	}
 	
-	@Test(groups = "logic", dependsOnGroups = { "std", "invalid", "misc" })
+	//@Test(groups = "logic", dependsOnGroups = { "std", "invalid", "misc" })
 	public void successfulMessageShouldBeShownAfterRegistration() {
 		page.registerUser("coder@rock.home");
 		
@@ -92,7 +92,7 @@ public class WhenAnonymousUserRegisterAccount
 		assertThat(page.textPresent(tr("t_activation_sent_message"))).isTrue();
 	}
 	
-	@DataProvider(name = "invalidEmails")
+	//@DataProvider(name = "invalidEmails")
 	public Object[][] getInvalidEmails() {
 		String expectedErrorMessage = tr("ru.mystamps.web.validation.jsr303.Email.message");
 		

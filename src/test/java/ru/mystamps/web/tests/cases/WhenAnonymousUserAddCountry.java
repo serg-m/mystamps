@@ -19,8 +19,8 @@ package ru.mystamps.web.tests.cases;
 
 import java.net.HttpURLConnection;
 
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+//import org.testng.annotations.BeforeClass;
+//import org.testng.annotations.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
@@ -38,22 +38,22 @@ public class WhenAnonymousUserAddCountry extends WhenAnyUserAtAnyPage<Unauthoriz
 		hasResponseServerCode(HttpURLConnection.HTTP_UNAUTHORIZED);
 	}
 	
-	@BeforeClass
+	//@BeforeClass
 	public void setUp() {
 		page.open(Url.ADD_COUNTRY_PAGE);
 	}
 	
-	@Test(groups = "std")
+	//@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
 		checkStandardStructure();
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
+	//@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsErrorMessage() {
 		assertThat(page.getErrorMessage()).isEqualTo(tr("t_401_description", "\n"));
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
+	//@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsErrorCode() {
 		assertThat(page.getErrorCode()).isEqualTo("401");
 	}

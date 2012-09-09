@@ -20,10 +20,10 @@ package ru.mystamps.web.tests.cases;
 import org.apache.commons.lang3.StringUtils;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+//import org.testng.annotations.AfterClass;
+//import org.testng.annotations.BeforeClass;
+//import org.testng.annotations.BeforeMethod;
+//import org.testng.annotations.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
@@ -56,27 +56,27 @@ public class WhenUserAddCountry extends WhenAnyUserAtAnyPageWithForm<AddCountryP
 		hasHeader(tr("t_add_country_ucfirst"));
 	}
 	
-	@BeforeClass
+	////@BeforeClass
 	public void login() {
 		page.login(validUserLogin, validUserPassword);
 	}
 	
-	@BeforeMethod
+	////@BeforeMethod
 	public void openPage() {
 		page.open();
 	}
 	
-	@AfterClass(alwaysRun = true)
+	////@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		page.logout();
 	}
 	
-	@Test(groups = "std")
+	//@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
 		checkStandardStructure();
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
+	//@Test(groups = "invalid", dependsOnGroups = "std")
 	public void countryNameShouldNotBeTooShort() {
 		page.addCountry("ee");
 		
@@ -85,7 +85,7 @@ public class WhenUserAddCountry extends WhenAnyUserAtAnyPageWithForm<AddCountryP
 			.hasError(tr("value.too-short", COUNTRY_NAME_MIN_LENGTH));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
+	//@Test(groups = "invalid", dependsOnGroups = "std")
 	public void countryNameShouldNotBeTooLong() {
 		page.addCountry(StringUtils.repeat("e", COUNTRY_NAME_MAX_LENGTH + 1));
 		
@@ -94,7 +94,7 @@ public class WhenUserAddCountry extends WhenAnyUserAtAnyPageWithForm<AddCountryP
 			.hasError(tr("value.too-long", COUNTRY_NAME_MAX_LENGTH));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
+	//@Test(groups = "invalid", dependsOnGroups = "std")
 	public void countryNameShouldBeUnique() {
 		page.addCountry(validCountryName);
 		
@@ -103,14 +103,14 @@ public class WhenUserAddCountry extends WhenAnyUserAtAnyPageWithForm<AddCountryP
 			.hasError(tr("ru.mystamps.web.validation.jsr303.UniqueCountryName.message"));
 	}
 	
-	@Test(groups = "valid", dependsOnGroups = "std")
+	//@Test(groups = "valid", dependsOnGroups = "std")
 	public void countryNameWithAllowedCharactersShouldBeAccepted() {
 		page.addCountry("Valid-Name Country");
 		
 		assertThat(page).field("name").hasNoError();
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
+	//@Test(groups = "invalid", dependsOnGroups = "std")
 	public void countryNameWithForbiddenCharactersShouldBeRejected() {
 		page.addCountry("S0m3+CountryN_ame");
 		
@@ -119,7 +119,7 @@ public class WhenUserAddCountry extends WhenAnyUserAtAnyPageWithForm<AddCountryP
 			.hasError(tr("country-name.invalid"));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
+	//@Test(groups = "invalid", dependsOnGroups = "std")
 	public void countryNameShouldNotStartsFromHyphen() {
 		page.addCountry("-test");
 		
@@ -128,7 +128,7 @@ public class WhenUserAddCountry extends WhenAnyUserAtAnyPageWithForm<AddCountryP
 			.hasError(tr("country-name.hyphen"));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
+	//@Test(groups = "invalid", dependsOnGroups = "std")
 	public void countryNameShouldNotEndsWithHyphen() {
 		page.addCountry("test-");
 		
@@ -137,14 +137,14 @@ public class WhenUserAddCountry extends WhenAnyUserAtAnyPageWithForm<AddCountryP
 			.hasError(tr("country-name.hyphen"));
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
+	//@Test(groups = "misc", dependsOnGroups = "std")
 	public void countryNameShouldBeStripedFromLeadingAndTrailingSpaces() {
 		page.addCountry(" t3st ");
 		
 		assertThat(page).field("name").hasValue("t3st");
 	}
 	
-	@Test(groups = "logic", dependsOnGroups = { "std", "invalid", "valid", "misc" })
+	//@Test(groups = "logic", dependsOnGroups = { "std", "invalid", "valid", "misc" })
 	public void shouldBeRedirectedToPageWithInfoAboutCountryAfterCreation() {
 		page.addCountry(TEST_COUNTRY_NAME);
 		
@@ -154,10 +154,10 @@ public class WhenUserAddCountry extends WhenAnyUserAtAnyPageWithForm<AddCountryP
 		assertThat(page.getHeader()).isEqualTo(TEST_COUNTRY_NAME);
 	}
 	
-	@Test(
-		groups = "logic",
-		dependsOnMethods = "shouldBeRedirectedToPageWithInfoAboutCountryAfterCreation"
-	)
+	//@Test(
+	//	groups = "logic",
+	//	dependsOnMethods = "shouldBeRedirectedToPageWithInfoAboutCountryAfterCreation"
+	//)
 	public void countryShouldBeAvailableForChoosingAtPageWithSeries() {
 		page.open(Url.ADD_SERIES_PAGE);
 		

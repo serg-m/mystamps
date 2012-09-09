@@ -21,8 +21,8 @@ import static org.fest.assertions.api.Assertions.assertThat;
 
 import java.net.HttpURLConnection;
 
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+//import org.testng.annotations.BeforeClass;
+//import org.testng.annotations.Test;
 
 import ru.mystamps.web.tests.page.NotFoundErrorPage;
 
@@ -36,27 +36,27 @@ public class WhenAnonymousUserOpenNotExistingPage extends WhenAnyUserAtAnyPage<N
 		hasResponseServerCode(HttpURLConnection.HTTP_NOT_FOUND);
 	}
 	
-	@BeforeClass
+	//@BeforeClass
 	public void setUp() {
 		page.open();
 	}
 	
-	@Test(groups = "std")
+	//@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
 		checkStandardStructure();
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
+	//@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsErrorMessage() {
 		assertThat(page.getErrorMessage()).isEqualTo(tr("t_404_description", "\n"));
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
+	//@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsErrorCode() {
 		assertThat(page.getErrorCode()).isEqualTo("404");
 	}
 	
-	@Test(groups = "logic", dependsOnGroups = "std", enabled = false)
+	//@Test(groups = "logic", dependsOnGroups = "std", enabled = false)
 	public void incidentShouldBeLoggedToDatabase() {
 		// TODO: check suspicious_activities table (#99)
 	}

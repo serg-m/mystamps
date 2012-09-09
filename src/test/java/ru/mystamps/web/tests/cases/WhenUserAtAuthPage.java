@@ -22,9 +22,9 @@ import static org.fest.assertions.api.Assertions.assertThat;
 import static ru.mystamps.web.tests.TranslationUtils.tr;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+//import org.testng.annotations.AfterClass;
+//import org.testng.annotations.BeforeClass;
+//import org.testng.annotations.Test;
 
 import ru.mystamps.web.tests.page.AuthAccountPage;
 
@@ -41,24 +41,24 @@ public class WhenUserAtAuthPage extends WhenAnyUserAtAnyPageWithForm<AuthAccount
 		hasTitle(tr("t_auth_title"));
 	}
 	
-	@BeforeClass
+	//@BeforeClass
 	public void setUp() {
 		page.open();
 		page.login(validUserLogin, validUserPassword);
 	}
 	
-	@AfterClass(alwaysRun = true)
+	//@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		page.logout();
 	}
 	
-	@Test(groups = "logic")
+	//@Test(groups = "logic")
 	public void messageShouldBeShown() {
 		assertThat(page.textPresent(tr("t_already_authenticated"))).isTrue();
 
 	}
 	
-	@Test(groups = "misc")
+	//@Test(groups = "misc")
 	public void formWithLegendShouldBeAbsent() {
 		assertThat(page.authenticationFormExists()).isFalse();
 		assertThat(page.getFormHints()).isEmpty();

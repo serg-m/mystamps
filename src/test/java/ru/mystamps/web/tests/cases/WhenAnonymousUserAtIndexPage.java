@@ -19,8 +19,8 @@ package ru.mystamps.web.tests.cases;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+//import org.testng.annotations.BeforeClass;
+//import org.testng.annotations.Test;
 
 import ru.mystamps.web.tests.page.IndexSitePage;
 
@@ -33,29 +33,29 @@ public class WhenAnonymousUserAtIndexPage extends WhenAnyUserAtAnyPage<IndexSite
 		hasTitle(tr("t_index_title"));
 	}
 	
-	@BeforeClass
+	//@BeforeClass
 	public void setUp() {
 		page.open();
 	}
 	
-	@Test(groups = "std")
+	//@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
 		checkStandardStructure();
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
+	//@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldAbsentWelcomeText() {
 		assertThat(page.textPresent(tr("t_you_may"))).isFalse();
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
+	//@Test(groups = "misc", dependsOnGroups = "std")
 	public void linkForAddingSeriesShouldBeAbsent() {
 		assertThat(page.linkWithLabelExists(tr("t_add_series")))
 			.overridingErrorMessage("should absent link to page for adding series of stamps")
 			.isFalse();
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
+	//@Test(groups = "misc", dependsOnGroups = "std")
 	public void linkForAddingCountriesShouldBeAbsent() {
 		assertThat(page.linkWithLabelExists(tr("t_add_country")))
 			.overridingErrorMessage("should absent link to page for adding countries")
