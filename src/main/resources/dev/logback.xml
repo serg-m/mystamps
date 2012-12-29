@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	
+	<appender name="spring-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/tmp/mystamps-spring.log</File>
+		<encoder>
+			<pattern>%d %5p - %m%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<maxIndex>1</maxIndex>
+			<FileNamePattern>/tmp/mystamps-spring.log.%i</FileNamePattern>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>1MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	
+	<appender name="hibernate-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/tmp/mystamps-hibernate.log</File>
+		<encoder>
+			<pattern>%d %5p - %m%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<maxIndex>1</maxIndex>
+			<FileNamePattern>/tmp/mystamps-hibernate.log.%i</FileNamePattern>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>1MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	
+	<appender name="mystamps-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/tmp/mystamps.log</File>
+		<encoder>
+			<pattern>%d %5p %c{1}.%M:%L - %m%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<maxIndex>1</maxIndex>
+			<FileNamePattern>/tmp/mystamps.log.%i</FileNamePattern>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>1MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	
+	<appender name="root-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>/tmp/mystamps-root.log</File>
+		<encoder>
+			<pattern>%d %5p - %m%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<maxIndex>1</maxIndex>
+			<FileNamePattern>/tmp/mystamps-root.log.%i</FileNamePattern>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>1MB</MaxFileSize>
+		</triggeringPolicy>
+	</appender>
+	
+	<logger name="org.springframework" level="WARN">
+		<appender-ref ref="spring-log"/>
+	</logger>
+	
+	<logger name="org.hibernate" level="WARN">
+		<appender-ref ref="hibernate-log"/>
+	</logger>
+	
+	<logger name="ru.mystamps" level="DEBUG">
+		<appender-ref ref="mystamps-log"/>
+	</logger>
+	
+	<root level="WARN">
+		<appender-ref ref="root-log"/>
+	</root>
+	
+</configuration>

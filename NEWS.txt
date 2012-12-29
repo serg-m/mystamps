@@ -1,3 +1,5 @@
+- switching to use slf4j over logback
+
 0.3
 - (functionality)  implemented possibility to user to add series to his collection
 - (functionality)  added charts on page with collection
