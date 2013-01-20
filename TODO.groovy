@@ -16,3 +16,14 @@ Steps:
 	java.net.*
 	java.util.*
 - remove public keyword
+
+* использовать '' для java строк
+* использовать "" для gString
+* использовать встроенные регулярные выражения
+* использовать .each {}
+* использовать именованные конструкторы:
+  a = new Account(name: 'Account #1', value: 1)
+* использовать присвоение вместо сеттеров (p.val = 1 vs p.setVal(1))
+* использовать elvis оператор (def b = a ?: "b")
+* использовать save navigation (def posts = user?.posts)
+
