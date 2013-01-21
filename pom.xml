@@ -54,6 +54,7 @@
 		<jetty.port>8081</jetty.port>
 		
 		<compiler.plugin.version>3.2</compiler.plugin.version>
+		<compiler.groovy.version>2.7.0-01</compiler.groovy.version>
 		<resources.plugin.version>2.7</resources.plugin.version>
 		<war.plugin.version>2.5</war.plugin.version>
 		<native2ascii.plugin.version>1.0-beta-1</native2ascii.plugin.version>
@@ -308,7 +309,7 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>${lombok.version}</version>
-			<scope>provided</scope>
+			<!-- Scope not runtime due to its usage by groovy-eclipse-compiler -->
 		</dependency>
 		
 		<dependency>
@@ -516,7 +517,24 @@
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
 					<debug>false</debug>
+					<compilerId>groovy-eclipse-compiler</compilerId>
+					<compilerArguments>
+						<javaAgentClass>lombok.core.Agent</javaAgentClass>
+					</compilerArguments>
+					<fork>true</fork>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.groovy</groupId>
+						<artifactId>groovy-eclipse-compiler</artifactId>
+						<version>${compiler.groovy.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.projectlombok</groupId>
+						<artifactId>lombok</artifactId>
+						<version>${lombok.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 			
 			<plugin>
