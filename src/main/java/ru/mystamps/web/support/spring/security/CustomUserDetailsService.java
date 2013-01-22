@@ -17,6 +17,7 @@
  */
 package ru.mystamps.web.support.spring.security;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -44,7 +45,7 @@ import ru.mystamps.web.service.UserService;
  */
 public class CustomUserDetailsService implements UserDetailsService {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(CustomUserDetailsService.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
 	private final UserService userService;
 	

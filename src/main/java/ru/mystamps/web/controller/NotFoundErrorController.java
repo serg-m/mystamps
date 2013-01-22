@@ -17,6 +17,8 @@
  */
 package ru.mystamps.web.controller;
 
+import java.lang.invoke.MethodHandles;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -36,7 +38,7 @@ import ru.mystamps.web.support.spring.security.CustomUserDetails;
 @Controller
 @RequestMapping(Url.NOT_FOUND_PAGE)
 public class NotFoundErrorController {
-	private static final Logger LOG = LoggerFactory.getLogger(NotFoundErrorController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
 	private final SiteService siteService;
 	

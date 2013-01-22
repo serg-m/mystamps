@@ -17,9 +17,10 @@
  */
 package ru.mystamps.web.service;
 
-import javax.inject.Inject;
-
+import java.lang.invoke.MethodHandles;
 import java.util.Date;
+
+import javax.inject.Inject;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -43,7 +44,7 @@ import static ru.mystamps.web.entity.User.Role.USER;
 
 public class UserServiceImpl implements UserService {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
 	private final UserDao users;
 	private final UsersActivationDao usersActivation;

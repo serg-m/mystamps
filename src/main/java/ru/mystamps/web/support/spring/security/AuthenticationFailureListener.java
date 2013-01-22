@@ -17,6 +17,8 @@
  */
 package ru.mystamps.web.support.spring.security;
 
+import java.lang.invoke.MethodHandles;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,7 +35,7 @@ import ru.mystamps.web.service.SiteService;
 public class AuthenticationFailureListener
 	implements ApplicationListener<AuthenticationFailureBadCredentialsEvent> {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(AuthenticationFailureListener.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
 	@Inject
 	private SiteService siteService;
