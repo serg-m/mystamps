@@ -62,6 +62,7 @@ public class UserServiceImpl implements UserService {
 		String login = dto.getLogin();
 		
 		// use login as name if name is not provided
+		// TODO: use Optional or Objects.firstNonNull() + Strings.emptyToNull()
 		String finalName;
 		if (StringUtils.isEmpty(dto.getName())) {
 			finalName = login;

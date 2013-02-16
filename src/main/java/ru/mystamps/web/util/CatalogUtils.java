@@ -39,6 +39,7 @@ public final class CatalogUtils {
 	private static final int ONE_ELEMENT_SIZE = 1;
 	private static final int TWO_ELEMENTS_SIZE = 2;
 	
+	// TODO: use Ordering
 	private static final Comparator<String> STR_AFTER_INT =
 		new Comparator<String>() {
 			@Override

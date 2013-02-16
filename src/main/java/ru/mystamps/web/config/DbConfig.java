@@ -85,6 +85,7 @@ public class DbConfig {
 	}
 	
 	private Map<String, String> getJpaProperties() {
+		// TODO: use ImmutableMap.of()
 		Map<String, String> jpaProperties = new HashMap<>();
 		jpaProperties.put(
 			"hibernate.format_sql",

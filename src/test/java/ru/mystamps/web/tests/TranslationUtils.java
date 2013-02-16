@@ -52,6 +52,7 @@ public final class TranslationUtils {
 		FileInputStream stream = null;
 		try {
 			File file = new File(
+				// TODO: use Resources.getResource()
 				TranslationUtils.class.getClassLoader().getResource(filename).toURI()
 			);
 			stream = new FileInputStream(file);

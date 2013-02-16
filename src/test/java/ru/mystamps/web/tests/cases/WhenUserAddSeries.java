@@ -72,6 +72,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		}
 		
 		try {
+			// TODO: use Resources.getResource()
 			SAMPLE_IMAGE_PATH = new File(
 				WhenUserAddSeries.class.getClassLoader().getResource(SAMPLE_IMAGE_NAME).toURI()
 			).getAbsolutePath();
