@@ -62,6 +62,7 @@ public final class TranslationUtils {
 			throw new RuntimeException(ex);
 		
 		} finally {
+			// TODO: use Closeables.closeQuietly()
 			IOUtils.closeQuietly(stream);
 		}
 	}
