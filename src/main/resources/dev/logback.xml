@@ -57,15 +57,15 @@
 		</triggeringPolicy>
 	</appender>
 	
-	<logger name="org.springframework" level="WARN">
+	<logger name="org.springframework" additivity="false" level="WARN">
 		<appender-ref ref="spring-log"/>
 	</logger>
 	
-	<logger name="org.hibernate" level="WARN">
+	<logger name="org.hibernate" additivity="false" level="WARN">
 		<appender-ref ref="hibernate-log"/>
 	</logger>
 	
-	<logger name="ru.mystamps" level="DEBUG">
+	<logger name="ru.mystamps" additivity="false" level="DEBUG">
 		<appender-ref ref="mystamps-log"/>
 	</logger>
 	
