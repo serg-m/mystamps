@@ -1,59 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 	
+	<variable name="LOG_DIR" value="/tmp" />
+	<variable name="LOG_PATTERN_SIMPLE" value="%d %5p - %m%n" />
+	<variable name="LOG_PATTERN_DETAILED" value="%d %5p %c{1}.%M:%L - %m%n" />
+	<variable name="LOG_SIZE_MAX" value="1MB" />
+	
+	<variable name="ROOT_LOG" value="${LOG_DIR}/mystamps-root.log" />
+	<variable name="SPRING_LOG" value="${LOG_DIR}/mystamps-spring.log" />
+	<variable name="HIBERNATE_LOG" value="${LOG_DIR}/mystamps-hibernate.log" />
+	<variable name="MYSTAMPS_LOG" value="${LOG_DIR}/mystamps.log" />
+	
 	<appender name="spring-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>/tmp/mystamps-spring.log</File>
+		<File>${SPRING_LOG}</File>
 		<encoder>
-			<pattern>%d %5p - %m%n</pattern>
+			<pattern>${LOG_PATTERN_SIMPLE}</pattern>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
 			<maxIndex>1</maxIndex>
-			<FileNamePattern>/tmp/mystamps-spring.log.%i</FileNamePattern>
+			<FileNamePattern>${SPRING_LOG}.%i</FileNamePattern>
 		</rollingPolicy>
 		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<MaxFileSize>1MB</MaxFileSize>
+			<MaxFileSize>${LOG_SIZE_MAX}</MaxFileSize>
 		</triggeringPolicy>
 	</appender>
 	
 	<appender name="hibernate-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>/tmp/mystamps-hibernate.log</File>
+		<File>${HIBERNATE_LOG}</File>
 		<encoder>
-			<pattern>%d %5p - %m%n</pattern>
+			<pattern>${LOG_PATTERN_SIMPLE}</pattern>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
 			<maxIndex>1</maxIndex>
-			<FileNamePattern>/tmp/mystamps-hibernate.log.%i</FileNamePattern>
+			<FileNamePattern>${HIBERNATE_LOG}.%i</FileNamePattern>
 		</rollingPolicy>
 		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<MaxFileSize>1MB</MaxFileSize>
+			<MaxFileSize>${LOG_SIZE_MAX}</MaxFileSize>
 		</triggeringPolicy>
 	</appender>
 	
 	<appender name="mystamps-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>/tmp/mystamps.log</File>
+		<File>${MYSTAMPS_LOG}</File>
 		<encoder>
-			<pattern>%d %5p %c{1}.%M:%L - %m%n</pattern>
+			<pattern>${LOG_PATTERN_DETAILED}</pattern>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
 			<maxIndex>1</maxIndex>
-			<FileNamePattern>/tmp/mystamps.log.%i</FileNamePattern>
+			<FileNamePattern>${MYSTAMPS_LOG}.%i</FileNamePattern>
 		</rollingPolicy>
 		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<MaxFileSize>1MB</MaxFileSize>
+			<MaxFileSize>${LOG_SIZE_MAX}</MaxFileSize>
 		</triggeringPolicy>
 	</appender>
 	
 	<appender name="root-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>/tmp/mystamps-root.log</File>
+		<File>${ROOT_LOG}</File>
 		<encoder>
-			<pattern>%d %5p - %m%n</pattern>
+			<pattern>${LOG_PATTERN_SIMPLE}</pattern>
 		</encoder>
 		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
 			<maxIndex>1</maxIndex>
-			<FileNamePattern>/tmp/mystamps-root.log.%i</FileNamePattern>
+			<FileNamePattern>${ROOT_LOG}.%i</FileNamePattern>
 		</rollingPolicy>
 		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-			<MaxFileSize>1MB</MaxFileSize>
+			<MaxFileSize>${LOG_SIZE_MAX}</MaxFileSize>
 		</triggeringPolicy>
 	</appender>
 	
