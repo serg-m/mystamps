@@ -23,6 +23,9 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 
+import com.google.common.base.Optional;
+import com.google.common.base.Strings;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,17 +62,6 @@ public class UserServiceImpl implements UserService {
 		Validate.isTrue(dto.getPassword() != null, "Password should be non null");
 		Validate.isTrue(dto.getActivationKey() != null, "Activation key should be non null");
 		
-		String login = dto.getLogin();
-		
-		// use login as name if name is not provided
-		// TODO: use Optional or Objects.firstNonNull() + Strings.emptyToNull()
-		String finalName;
-		if (StringUtils.isEmpty(dto.getName())) {
-			finalName = login;
-		} else {
-			finalName = dto.getName();
-		}
-		
 		String activationKey = dto.getActivationKey();
 		UsersActivation activation = usersActivationService.findByActivationKey(activationKey);
 		if (activation == null) {
@@ -85,12 +77,15 @@ public class UserServiceImpl implements UserService {
 		String hash = encoder.encodePassword(dto.getPassword(), salt);
 		Validate.validState(hash != null, "Generated hash must be non null");
 		
+		String login = dto.getLogin();
+		Optional<String> name = Optional.fromNullable(Strings.emptyToNull(dto.getName()));
+		
 		Date now = new Date();
 		
 		User user = new User();
 		user.setLogin(login);
 		user.setRole(USER);
-		user.setName(finalName);
+		user.setName(name.or(login));
 		user.setEmail(email);
 		user.setRegisteredAt(registrationDate);
 		user.setActivatedAt(now);
@@ -105,7 +100,7 @@ public class UserServiceImpl implements UserService {
 		LOG.info(
 			"Added user (login='{}', name='{}', activation key='{}')",
 			login,
-			finalName,
+			name.or(login),
 			activationKey
 		);
 	}
