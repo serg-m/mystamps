@@ -50,6 +50,7 @@ public final class TranslationUtils {
 	
 	private static ResourceBundle getResourceBundleForFile(String filename) {
 		FileInputStream stream = null;
+		// TODO: use try with resources
 		try {
 			File file = new File(
 				TranslationUtils.class.getClassLoader().getResource(filename).toURI()
