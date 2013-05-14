@@ -33,7 +33,7 @@ public final class WebElementUtils {
 			return Collections.<String>emptyList();
 		}
 		
-		List<String> result = new ArrayList<String>(elements.size());
+		List<String> result = new ArrayList<>(elements.size());
 		for (WebElement el : elements) {
 			result.add(el.getText());
 		}

@@ -39,21 +39,20 @@ public final class CatalogUtils {
 	private static final int ONE_ELEMENT_SIZE = 1;
 	private static final int TWO_ELEMENTS_SIZE = 2;
 	
-	private static final Comparator<String> STR_AFTER_INT =
-		new Comparator<String>() {
-			@Override
-			public int compare(String lhs, String rhs) {
-				try {
-					Integer left = Integer.valueOf(lhs);
-					Integer right = Integer.valueOf(rhs);
-					return left.compareTo(right);
-				
-				} catch (NumberFormatException ex) {
-					return 1;
-				}
-				
+	private static final Comparator<String> STR_AFTER_INT = new Comparator<>() {
+		@Override
+		public int compare(String lhs, String rhs) {
+			try {
+				Integer left = Integer.valueOf(lhs);
+				Integer right = Integer.valueOf(rhs);
+				return left.compareTo(right);
+			
+			} catch (NumberFormatException ex) {
+				return 1;
 			}
-		};
+			
+		}
+	};
 	
 	private CatalogUtils() {
 	}
@@ -68,13 +67,13 @@ public final class CatalogUtils {
 			return "";
 		}
 		
-		Set<String> numbers = new TreeSet<String>(STR_AFTER_INT);
+		Set<String> numbers = new TreeSet<>(STR_AFTER_INT);
 		for (StampsCatalog catalog : catalogNumbers) {
 			numbers.add(catalog.getCode());
 		}
 		
-		List<String> groups = new ArrayList<String>();
-		List<String> currentBuffer = new ArrayList<String>();
+		List<String> groups = new ArrayList<>();
+		List<String> currentBuffer = new ArrayList<>();
 		for (String currentString : numbers) {
 			
 			// for first element
@@ -116,7 +115,7 @@ public final class CatalogUtils {
 		
 		Validate.isTrue(elementClass != null, "Class of element must be non null");
 		
-		Set<T> result = new LinkedHashSet<T>();
+		Set<T> result = new LinkedHashSet<>();
 		for (String number : catalogNumbers.split(",")) {
 			Validate.validState(!number.trim().isEmpty(), "Catalog number must be non empty");
 			
