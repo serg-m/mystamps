@@ -30,4 +30,18 @@
 		<url-pattern>/console/*</url-pattern>
 	</servlet-mapping>
 	
+	<!--
+		Servlet allow to see the configured log4j loggers and change their level at runtime.
+		@see http://openutils.sourceforge.net/openutils-log4j/servlet.html
+	-->
+	<servlet>
+		<servlet-name>Log4jConsole</servlet-name>
+		<servlet-class>it.openutils.log4j.Log4jConfigurationServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Log4jConsole</servlet-name>
+		<url-pattern>/logger</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
