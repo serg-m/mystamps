@@ -484,6 +484,12 @@
 					<!-- Run junit tests only (see #SUREFIRE-377) -->
 					<testNGArtifactName>none:none</testNGArtifactName>
 					<skipTests>${skipTests}</skipTests>
+					<includes>
+						<include>src/test/java/ru/mystamps/web/tests/it/story/*.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/*Test.java</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 			
