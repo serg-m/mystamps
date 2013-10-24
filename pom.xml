@@ -43,6 +43,7 @@
 		<cglib.version>2.2.2</cglib.version>
 		<groovy.version>2.0.8</groovy.version>
 		<fest.assert.version>2.0M8</fest.assert.version>
+		<thucydides.version>0.9.125</thucydides.version>
 		
 		<java.version>1.6</java.version>
 		
@@ -293,6 +294,19 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>net.thucydides</groupId>
+			<artifactId>thucydides-junit</artifactId>
+			<version>${thucydides.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
@@ -471,6 +485,12 @@
 					<testNGArtifactName>none:none</testNGArtifactName>
 					<skipTests>${skipTests}</skipTests>
 				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>net.thucydides.maven.plugins</groupId>
+				<artifactId>maven-thucydides-plugin</artifactId>
+				<version>${thucydides.version}</version>
 			</plugin>
 			
 			<plugin>
