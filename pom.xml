@@ -303,6 +303,14 @@
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
+				<exclusion>
+					<groupId>com.opera</groupId>
+					<artifactId>operadriver</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.github.detro.ghostdriver</groupId>
+					<artifactId>phantomjsdriver</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		
