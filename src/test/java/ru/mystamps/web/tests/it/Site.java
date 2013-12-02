@@ -29,4 +29,20 @@ public class Site {
 		public class LogOut {}
 	}
 	
+	@Feature
+	public class Country {
+		public class Creation {}
+	}
+	
+	@Feature
+	public class Category {
+		public class Creation {}
+	}
+	
+	@Feature
+	public class Series {
+		public class Creation {}
+	
+	}
+	
 }
