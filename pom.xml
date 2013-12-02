@@ -303,6 +303,7 @@
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
+				<!--
 				<exclusion>
 					<groupId>com.opera</groupId>
 					<artifactId>operadriver</artifactId>
@@ -311,6 +312,7 @@
 					<groupId>com.github.detro.ghostdriver</groupId>
 					<artifactId>phantomjsdriver</artifactId>
 				</exclusion>
+				-->
 			</exclusions>
 		</dependency>
 		
@@ -332,6 +334,7 @@
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
+				<!--
 				<exclusion>
 					<groupId>org.seleniumhq.selenium</groupId>
 					<artifactId>selenium-android-driver</artifactId>
@@ -356,6 +359,7 @@
 					<groupId>org.seleniumhq.selenium</groupId>
 					<artifactId>selenium-safari-driver</artifactId>
 				</exclusion>
+				-->
 			</exclusions>
 		</dependency>
 		
@@ -549,7 +553,7 @@
 					<disableXmlReport>true</disableXmlReport>
 					<skipTests>${skipTests}</skipTests>
 					<includes>
-						<include>src/test/java/ru/mystamps/web/tests/it/story/*.java</include>
+						<include>ru/mystamps/web/tests/it/story/*.java</include>
 					</includes>
 				</configuration>
 				<executions>

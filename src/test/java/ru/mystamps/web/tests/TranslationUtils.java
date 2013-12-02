@@ -30,9 +30,9 @@ import org.apache.commons.io.IOUtils;
 public final class TranslationUtils {
 	
 	private static final String [] PROPERTIES_FILE_NAMES = new String[] {
-		"ru/mystamps/i18n/Messages.properties",
-		"ru/mystamps/i18n/ValidationMessages.properties",
-		"ru/mystamps/i18n/SpringSecurityMessages.properties"
+		"ru/mystamps/i18n/Messages_ru.properties",
+		"ru/mystamps/i18n/ValidationMessages_ru.properties",
+		"ru/mystamps/i18n/SpringSecurityMessages_ru.properties"
 	};
 	
 	private static final ResourceBundle [] BUNDLES;

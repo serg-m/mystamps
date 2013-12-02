@@ -18,11 +18,11 @@
 package ru.mystamps.web.tests.it.page;
 
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import ru.mystamps.web.Url;
 
@@ -39,7 +39,7 @@ public class ActivateAccountPage extends PageObject {
 	}
 	
 	public String getSuccessfulMessageText() {
-		return "TODO";
+		return successfulMessage.getText();
 	}
 	
 }

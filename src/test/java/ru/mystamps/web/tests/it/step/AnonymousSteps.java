@@ -33,7 +33,9 @@ public class AnonymousSteps extends ScenarioSteps {
 	
 	@Step
 	public ActivateAccountPage registerUser(String email) {
-		// TODO
+		AccountRegistrationPage page = getPages().get(AccountRegistrationPage.class);
+		page.registerUser(email);
+		
 		return new ActivateAccountPage(getDriver());
 	}
 	

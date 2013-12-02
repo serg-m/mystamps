@@ -21,14 +21,29 @@ import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import ru.mystamps.web.Url;
 
 @DefaultUrl(Url.SITE + Url.REGISTRATION_PAGE)
 public class AccountRegistrationPage extends PageObject {
 	
+	// TODO: set visibility
+	@FindBy(name = "email")
+	WebElement emailField;
+	
+	// TODO: set visibility
+	@FindBy(xpath = "//input[@type='submit']")
+	WebElement submitButton;
+	
 	public AccountRegistrationPage(WebDriver driver) {
 		super(driver);
+	}
+	
+	public void registerUser(String email) {
+		typeInto(emailField, email);
+		submitButton.click();
 	}
 	
 }
