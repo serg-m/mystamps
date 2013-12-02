@@ -4,6 +4,9 @@
 - что делает getPages().currentPageAt(HomePage.class)
   (it actually does a little more than this, including optionally checking that you are one the right page)
 - что делает @DefaultUrl
+- попробовать @AfterScenario/@BeforeScenario
+- @Managed(uniqueSession=true)
+- @StepGroup
 
 - разобраться с сообщениями (сделать, чтобы браузер работал в англ. локали)
 - разобраться с драйверами (явно указать необходимый)
