@@ -1,5 +1,17 @@
+
 - изучить net.thucydides.core.pages.PageObject
 - изучить net.thucydides.core.steps.ScenarioSteps
+- что делает getPages().currentPageAt(HomePage.class)
+  (it actually does a little more than this, including optionally checking that you are one the right page)
+- что делает @DefaultUrl
+
+- разобраться с сообщениями (сделать, чтобы браузер работал в англ. локали)
+- разобраться с драйверами (явно указать необходимый)
+
+- задать видимость WebElement-ам
+
+- AccountRegistration: разбить регистрацию на два шага (для наглядности?)
+- AccountRegistration: разобраться с тем где лучше ставить проверки
 
 - https://github.com/thucydides-webtests/thucydides/wiki
 - https://github.com/thucydides-webtests/thucydides/wiki/Getting-Started

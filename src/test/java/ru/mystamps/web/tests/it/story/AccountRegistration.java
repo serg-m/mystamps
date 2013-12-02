@@ -59,8 +59,11 @@ public class AccountRegistration {
 	@Test
 	public void anonymousUserRegistersAnAccount() {
 		anonymousSteps.openAccountRegistrationPage();
+		
+		// TODO: fillForm + submitForm?
 		ActivateAccountPage page = anonymousSteps.registerUser("coder@rock.home");
 		
+		// TODO: move assertion to Step?
 		assertThat(page.getSuccessfulMessageText()).isEqualTo(tr("t_activation_sent_message"));
 	}
 	
