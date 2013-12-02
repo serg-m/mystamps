@@ -38,6 +38,7 @@
 		<bootstrap.version>2.3.1</bootstrap.version>
 		<jquery.version>1.9.1</jquery.version>
 		
+		<junit.version>4.10</junit.version>
 		<spock.version>0.7-groovy-2.0</spock.version>
 		<cglib.version>2.2.2</cglib.version>
 		<groovy.version>2.0.8</groovy.version>
@@ -264,6 +265,13 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.spockframework</groupId>
 			<artifactId>spock-core</artifactId>
 			<version>${spock.version}</version>
@@ -474,12 +482,6 @@
 				<version>${surefire.plugin.version}</version>
 				<configuration>
 					<skipTests>${skipTests}</skipTests>
-					<includes>
-						<include>src/test/java/ru/mystamps/web/tests/it/story/*.java</include>
-					</includes>
-					<excludes>
-						<exclude>**/*Test.java</exclude>
-					</excludes>
 				</configuration>
 			</plugin>
 			
@@ -538,6 +540,9 @@
 					<useFile>false</useFile>
 					<disableXmlReport>true</disableXmlReport>
 					<skipTests>${skipTests}</skipTests>
+					<includes>
+						<include>src/test/java/ru/mystamps/web/tests/it/story/*.java</include>
+					</includes>
 				</configuration>
 				<executions>
 					<execution>

@@ -74,14 +74,6 @@ public class WhenAnonymousUserRegisterAccount
 		assertThat(page).field("email").hasValue("test");
 	}
 	
-	public void successfulMessageShouldBeShownAfterRegistration() {
-		page.registerUser("coder@rock.home");
-		
-		assertThat(page.getCurrentUrl()).isEqualTo(Url.ACTIVATE_ACCOUNT_PAGE);
-		
-		assertThat(page.textPresent(tr("t_activation_sent_message"))).isTrue();
-	}
-	
 	public Object[][] getInvalidEmails() {
 		String expectedErrorMessage = tr("ru.mystamps.web.validation.jsr303.Email.message");
 		
