@@ -18,9 +18,6 @@
 package ru.mystamps.web.tests.cases;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
@@ -42,23 +39,19 @@ public class WhenUserAtRegisterAccountPage
 		hasTitle(tr("t_registration_title"));
 	}
 	
-	@BeforeClass
 	public void setUp() {
 		page.open();
 		page.login(validUserLogin, validUserPassword);
 	}
 	
-	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		page.logout();
 	}
 	
-	@Test(groups = "logic")
 	public void messageShouldBeShown() {
 		assertThat(page.textPresent(tr("t_already_registered"))).isTrue();
 	}
 	
-	@Test(groups = "misc")
 	public void formWithLegendShouldBeAbsent() {
 		assertThat(page.registrationFormExists()).isFalse();
 		assertThat(page.getFormHints()).isEmpty();

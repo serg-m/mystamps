@@ -22,7 +22,6 @@ import java.net.HttpURLConnection;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 
 import ru.mystamps.web.tests.WebDriverFactory;
 import ru.mystamps.web.config.TestContext;
@@ -38,8 +37,7 @@ import static ru.mystamps.web.tests.TranslationUtils.tr;
 	loader = AnnotationConfigContextLoader.class,
 	classes = TestContext.class
 )
-abstract class WhenAnyUserAtAnyPage<T extends AbstractPage>
-	extends AbstractTestNGSpringContextTests {
+abstract class WhenAnyUserAtAnyPage<T extends AbstractPage> {
 	
 	/**
 	 * Prefix of page's title  which will be prepend by hasTitle().

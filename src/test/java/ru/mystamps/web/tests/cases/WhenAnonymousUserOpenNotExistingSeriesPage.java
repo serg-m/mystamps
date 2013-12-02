@@ -21,8 +21,6 @@ import java.net.HttpURLConnection;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-import org.testng.annotations.Test;
-
 import ru.mystamps.web.tests.page.NotFoundErrorPage;
 import ru.mystamps.web.Url;
 
@@ -37,7 +35,6 @@ public class WhenAnonymousUserOpenNotExistingSeriesPage
 		hasResponseServerCode(HttpURLConnection.HTTP_NOT_FOUND);
 	}
 	
-	@Test(groups = "logic")
 	public void shouldShow404Page() {
 		String absentSeriesId = "999";
 		page.open(Url.INFO_SERIES_PAGE.replace("{id}", absentSeriesId));

@@ -28,12 +28,6 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Value;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
 import ru.mystamps.web.entity.Currency;
 import ru.mystamps.web.tests.page.AbstractPage;
 import ru.mystamps.web.tests.page.AddSeriesPage;
@@ -112,27 +106,22 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		hasHeader(tr("t_add_series_ucfirst"));
 	}
 	
-	@BeforeClass
 	public void login() {
 		page.login(validUserLogin, validUserPassword);
 	}
 	
-	@BeforeMethod
 	public void openPage() {
 		page.open();
 	}
 	
-	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		page.logout();
 	}
 	
-	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
 		checkStandardStructure();
 	}
 	
-	@Test(groups = "valid", dependsOnGroups = "std", dataProvider = "validCatalogNumbers")
 	public void michelNumbersShouldAcceptValidValues(String numbers, Object whatever) {
 		page.fillMichelNumbers(numbers);
 		
@@ -141,7 +130,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("michelNumbers").hasNoError();
 	}
 	
-	@Test(groups = "valid", dependsOnGroups = "std", dataProvider = "validCatalogNumbers")
 	public void scottNumbersShouldAcceptValidValues(String numbers, Object whatever) {
 		page.fillScottNumbers(numbers);
 		
@@ -150,7 +138,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("scottNumbers").hasNoError();
 	}
 	
-	@Test(groups = "valid", dependsOnGroups = "std", dataProvider = "validCatalogNumbers")
 	public void yvertNumbersShouldAcceptValidValues(String numbers, Object whatever) {
 		page.fillYvertNumbers(numbers);
 		
@@ -159,7 +146,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("yvertNumbers").hasNoError();
 	}
 	
-	@Test(groups = "valid", dependsOnGroups = "std", dataProvider = "validCatalogNumbers")
 	public void gibbonsNumbersShouldAcceptValidValues(String numbers, Object whatever) {
 		page.fillGibbonsNumbers(numbers);
 		
@@ -168,7 +154,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("gibbonsNumbers").hasNoError();
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void quantityShouldBeANumber() {
 		page.fillQuantity("NaN");
 		
@@ -177,7 +162,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("quantity").hasError(tr("typeMismatch"));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void quantityShouldBeNotLessThanLimit() {
 		page.fillQuantity(String.valueOf(MIN_STAMPS_IN_SERIES - 1));
 		
@@ -188,7 +172,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 			.hasError(tr("javax.validation.constraints.Min.message", MIN_STAMPS_IN_SERIES));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void quantityShouldNotBeGreaterThanLimit() {
 		page.fillQuantity(String.valueOf(MAX_STAMPS_IN_SERIES + 1));
 		
@@ -199,7 +182,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 			.hasError(tr("javax.validation.constraints.Max.message", MAX_STAMPS_IN_SERIES));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogNumbers")
 	public void michelNumbersShouldRejectInvalidValues(String numbers, String msg) {
 		page.fillMichelNumbers(numbers);
 		
@@ -208,7 +190,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("michelNumbers").hasError(msg);
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogNumbers")
 	public void scottNumbersShouldRejectInvalidValues(String numbers, String msg) {
 		page.fillScottNumbers(numbers);
 		
@@ -217,7 +198,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("scottNumbers").hasError(msg);
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogNumbers")
 	public void yvertNumbersShouldRejectInvalidValues(String numbers, String msg) {
 		page.fillYvertNumbers(numbers);
 		
@@ -226,7 +206,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("yvertNumbers").hasError(msg);
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogNumbers")
 	public void gibbonsNumbersShouldRejectInvalidValues(String numbers, String msg) {
 		page.fillGibbonsNumbers(numbers);
 		
@@ -235,7 +214,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("gibbonsNumbers").hasError(msg);
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogPrices")
 	public void michelPriceShouldRejectInvalidValues(String price, String msg) {
 		page.fillMichelPrice(price);
 		
@@ -244,7 +222,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("michelPrice").hasError(msg);
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogPrices")
 	public void scottPriceShouldRejectInvalidValues(String price, String msg) {
 		page.fillScottPrice(price);
 		
@@ -253,7 +230,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("scottPrice").hasError(msg);
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogPrices")
 	public void yvertPriceShouldRejectInvalidValues(String price, String msg) {
 		page.fillYvertPrice(price);
 		
@@ -262,7 +238,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("yvertPrice").hasError(msg);
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogPrices")
 	public void gibbonsPriceShouldRejectInvalidValues(String price, String msg) {
 		page.fillGibbonsPrice(price);
 		
@@ -271,7 +246,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("gibbonsPrice").hasError(msg);
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void michelNumbersShouldRejectExistingValues() {
 		page.fillMichelNumbers(existingMichelNumber);
 		
@@ -282,7 +256,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 			.hasError(tr("ru.mystamps.web.validation.jsr303.UniqueMichelNumbers.message"));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void scottNumbersShouldRejectExistingValues() {
 		page.fillScottNumbers(existingScottNumber);
 		
@@ -293,7 +266,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 			.hasError(tr("ru.mystamps.web.validation.jsr303.UniqueScottNumbers.message"));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void yvertNumbersShouldRejectExistingValues() {
 		page.fillYvertNumbers(existingYvertNumber);
 		
@@ -304,7 +276,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 			.hasError(tr("ru.mystamps.web.validation.jsr303.UniqueYvertNumbers.message"));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void gibbonsNumbersShouldRejectExistingValues() {
 		page.fillGibbonsNumbers(existingGibbonsNumber);
 		
@@ -315,7 +286,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 			.hasError(tr("ru.mystamps.web.validation.jsr303.UniqueGibbonsNumbers.message"));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void imageSizeMustBeGreaterThanZero() {
 		page.fillImage(EMPTY_IMAGE_PATH);
 		
@@ -326,32 +296,26 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 			.hasError(tr("ru.mystamps.web.validation.jsr303.NotEmptyFile.message"));
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void issueYearFieldShouldHaveOptionsForRangeFrom1840ToCurrentYear() {
 		assertThat(page.getYearFieldValues()).isEqualTo(EXPECTED_YEARS);
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void michelCurrencyFieldShouldHaveOptionsWithAllCurrencies() {
 		assertThat(page.getMichelCurrencies()).isEqualTo(EXPECTED_CURRENCIES);
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void scottCurrencyFieldShouldHaveOptionsWithAllCurrencies() {
 		assertThat(page.getScottCurrencies()).isEqualTo(EXPECTED_CURRENCIES);
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void yvertCurrencyFieldShouldHaveOptionsWithAllCurrencies() {
 		assertThat(page.getYvertCurrencies()).isEqualTo(EXPECTED_CURRENCIES);
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void gibbonsCurrencyFieldShouldHaveOptionsWithAllCurrencies() {
 		assertThat(page.getGibbonsCurrencies()).isEqualTo(EXPECTED_CURRENCIES);
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void michelNumbersShouldBeStripedFromSpaces() {
 		page.fillMichelNumbers(" 1 , 2 ");
 		
@@ -360,7 +324,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("michelNumbers").hasValue("1,2");
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void scottNumbersShouldBeStripedFromSpaces() {
 		page.fillScottNumbers(" 3 , 4 ");
 		
@@ -369,7 +332,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("scottNumbers").hasValue("3,4");
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void yvertNumbersShouldBeStripedFromSpaces() {
 		page.fillYvertNumbers(" 5 , 6 ");
 		
@@ -378,7 +340,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("yvertNumbers").hasValue("5,6");
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void gibbonsNumbersShouldBeStripedFromSpaces() {
 		page.fillGibbonsNumbers(" 7 , 8 ");
 		
@@ -387,7 +348,14 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(page).field("gibbonsNumbers").hasValue("7,8");
 	}
 	
-	@Test(groups = "logic", dependsOnGroups = { "std", "valid", "invalid", "misc" })
+	public void commentShouldBeStripedFromLeadingAndTrailingSpaces() {
+		page.fillComment(" example comment ");
+		
+		page.submit();
+		
+		assertThat(page).field("comment").hasValue("example comment");
+	}
+	
 	public void shouldCreateSeriesWithOnlyRequiredFieldsFilled() {
 		String expectedCategoryName = validCategoryName;
 		String expectedQuantity     = "2";
@@ -410,7 +378,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(nextPage.getPerforated()).isEqualTo(tr("t_yes"));
 	}
 	
-	@Test(groups = "logic", dependsOnGroups = { "std", "valid", "invalid", "misc" })
 	public void shouldCreateSeriesWithAllFieldsFilled() {
 		String expectedPageUrl      = Url.INFO_SERIES_PAGE.replace("{id}", "\\d+");
 		String expectedImageUrl     = Url.SITE + Url.GET_IMAGE_PAGE.replace("{id}", "\\d+");
@@ -464,7 +431,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(nextPage.getGibbonsCatalogInfo()).isEqualTo("#30-32 (400.34 RUR)");
 	}
 	
-	@Test(groups = "logic", dependsOnGroups = { "std", "valid", "invalid", "misc" })
 	public void shouldIgnoreDuplicatedMichelNumbers() {
 		page.fillCategory(validCategoryName);
 		page.fillQuantity("2");
@@ -478,7 +444,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(nextPage.getMichelCatalogInfo()).isEqualTo("#4, 5");
 	}
 	
-	@Test(groups = "logic", dependsOnGroups = { "std", "valid", "invalid", "misc" })
 	public void shouldIgnoreDuplicatedScottNumbers() {
 		page.fillCategory(validCategoryName);
 		page.fillQuantity("2");
@@ -492,7 +457,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(nextPage.getScottCatalogInfo()).isEqualTo("#14, 15");
 	}
 	
-	@Test(groups = "logic", dependsOnGroups = { "std", "valid", "invalid", "misc" })
 	public void shouldIgnoreDuplicatedYvertNumbers() {
 		page.fillCategory(validCategoryName);
 		page.fillQuantity("2");
@@ -506,7 +470,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(nextPage.getYvertCatalogInfo()).isEqualTo("#24, 25");
 	}
 	
-	@Test(groups = "logic", dependsOnGroups = { "std", "valid", "invalid", "misc" })
 	public void shouldIgnoreDuplicatedGibbonsNumbers() {
 		page.fillCategory(validCategoryName);
 		page.fillQuantity("2");
@@ -520,7 +483,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		assertThat(nextPage.getGibbonsCatalogInfo()).isEqualTo("#34, 35");
 	}
 	
-	@DataProvider(name = "validCatalogNumbers")
 	public Object[][] getValidCatalogNumbers() {
 		return new Object[][] {
 			{"7", null},
@@ -530,7 +492,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		};
 	}
 	
-	@DataProvider(name = "invalidCatalogNumbers")
 	public Object[][] getInvalidCatalogNumbers() {
 		String expectedErrorMessage =
 			tr("ru.mystamps.web.validation.jsr303.CatalogNumbers.message");
@@ -548,7 +509,6 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 		};
 	}
 	
-	@DataProvider(name = "invalidCatalogPrices")
 	public Object[][] getInvalidCatalogPrices() {
 		String expectedErrorMessage = tr("ru.mystamps.web.validation.jsr303.Price.message");
 		

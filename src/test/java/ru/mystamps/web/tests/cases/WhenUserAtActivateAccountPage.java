@@ -22,9 +22,6 @@ import static org.fest.assertions.api.Assertions.assertThat;
 import static ru.mystamps.web.tests.TranslationUtils.tr;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 import ru.mystamps.web.tests.page.ActivateAccountPage;
 
@@ -42,24 +39,20 @@ public class WhenUserAtActivateAccountPage
 		hasTitle(tr("t_activation_title"));
 	}
 	
-	@BeforeClass
 	public void setUp() {
 		page.open();
 		page.login(validUserLogin, validUserPassword);
 	}
 	
-	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		page.logout();
 	}
 	
-	@Test(groups = "logic")
 	public void messageShouldBeShown() {
 		assertThat(page.textPresent(tr("t_already_activated"))).isTrue();
 
 	}
 	
-	@Test(groups = "misc")
 	public void formWithLegendShouldBeAbsent() {
 		assertThat(page.activationFormExists()).isFalse();
 		assertThat(page.getFormHints()).isEmpty();

@@ -38,7 +38,6 @@
 		<bootstrap.version>2.3.1</bootstrap.version>
 		<jquery.version>1.9.1</jquery.version>
 		
-		<testng.version>6.7</testng.version>
 		<spock.version>0.7-groovy-2.0</spock.version>
 		<cglib.version>2.2.2</cglib.version>
 		<groovy.version>2.0.8</groovy.version>
@@ -265,13 +264,6 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>${testng.version}</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
 			<groupId>org.spockframework</groupId>
 			<artifactId>spock-core</artifactId>
 			<version>${spock.version}</version>
@@ -481,8 +473,6 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${surefire.plugin.version}</version>
 				<configuration>
-					<!-- Run junit tests only (see #SUREFIRE-377) -->
-					<testNGArtifactName>none:none</testNGArtifactName>
 					<skipTests>${skipTests}</skipTests>
 					<includes>
 						<include>src/test/java/ru/mystamps/web/tests/it/story/*.java</include>
@@ -547,9 +537,6 @@
 				<configuration>
 					<useFile>false</useFile>
 					<disableXmlReport>true</disableXmlReport>
-					<suiteXmlFiles>
-						<suiteXmlFile>${basedir}/src/test/config/testng.xml</suiteXmlFile>
-					</suiteXmlFiles>
 					<skipTests>${skipTests}</skipTests>
 				</configuration>
 				<executions>

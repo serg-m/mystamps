@@ -20,8 +20,6 @@ package ru.mystamps.web.tests.cases;
 import static org.fest.assertions.api.Assertions.assertThat;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import ru.mystamps.web.Url;
 import ru.mystamps.web.tests.page.AuthAccountPage;
@@ -51,17 +49,14 @@ public class WhenAnonymousUserAuthenticates extends WhenAnyUserAtAnyPageWithForm
 		hasHeader(tr("t_authentication_on_site"));
 	}
 	
-	@BeforeMethod
 	public void openPage() {
 		page.open();
 	}
 	
-	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
 		checkStandardStructure();
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void emptyValuesShouldBeConsideredAsInvalidCredentials() {
 		page.authorizeUser("", "");
 		
@@ -69,7 +64,6 @@ public class WhenAnonymousUserAuthenticates extends WhenAnyUserAtAnyPageWithForm
 			.isEqualTo(tr("AbstractUserDetailsAuthenticationProvider.badCredentials"));
 	}
 	
-	@Test(groups = "invalid", dependsOnGroups = "std")
 	public void invalidCredentialsShouldBeRejected() {
 		page.authorizeUser(invalidUserLogin, invalidUserPassword);
 		
@@ -77,7 +71,6 @@ public class WhenAnonymousUserAuthenticates extends WhenAnyUserAtAnyPageWithForm
 			.isEqualTo(tr("AbstractUserDetailsAuthenticationProvider.badCredentials"));
 	}
 	
-	@Test(groups = "logic", dependsOnGroups = "std")
 	public void validCredentialsShouldAuthenticateUserOnSite() {
 		page.authorizeUser(validUserLogin, validUserPassword);
 		

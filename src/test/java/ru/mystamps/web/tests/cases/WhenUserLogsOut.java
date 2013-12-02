@@ -18,7 +18,6 @@
 package ru.mystamps.web.tests.cases;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.testng.annotations.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
@@ -39,7 +38,6 @@ public class WhenUserLogsOut extends WhenAnyUserAtAnyPage<LogoutAccountPage> {
 		super(LogoutAccountPage.class);
 	}
 	
-	@Test(groups = "logic")
 	public void shouldRedirectAndClearSession() {
 		page.login(validUserLogin, validUserPassword);
 		page.open();

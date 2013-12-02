@@ -21,10 +21,6 @@ import static org.fest.assertions.api.Assertions.assertThat;
 
 import org.springframework.beans.factory.annotation.Value;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-
 import ru.mystamps.web.tests.page.IndexSitePage;
 
 import static ru.mystamps.web.tests.TranslationUtils.tr;
@@ -42,35 +38,29 @@ public class WhenUserAtIndexPage extends WhenAnyUserAtAnyPage<IndexSitePage> {
 		hasTitle(tr("t_index_title"));
 	}
 	
-	@BeforeClass
 	public void setUp() {
 		page.open();
 		page.login(validUserLogin, validUserPassword);
 	}
 	
-	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		page.logout();
 	}
 	
-	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
 		checkStandardStructure();
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsWelcomeText() {
 		assertThat(page.textPresent(tr("t_you_may"))).isTrue();
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsLinkForAddingSeries() {
 		assertThat(page.linkWithLabelExists(tr("t_add_series")))
 			.overridingErrorMessage("should exists link to page for adding series of stamps")
 			.isTrue();
 	}
 	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void shouldExistsLinkForAddingCountries() {
 		assertThat(page.linkWithLabelExists(tr("t_add_country")))
 			.overridingErrorMessage("should exists link to page for adding countries")
