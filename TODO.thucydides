@@ -8,6 +8,8 @@
 - @Managed(uniqueSession=true)
 - @StepGroup
 - @CacheLookup
+- net.thucydides.core.pages.components.FileToUpload
+- net.thucydides.core.pages.components.Dropdown
 
 - разобраться с сообщениями (сделать, чтобы браузер работал в англ. локали)
 - разобраться с драйверами (явно указать необходимый)
