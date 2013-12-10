@@ -7,6 +7,7 @@
 - попробовать @AfterScenario/@BeforeScenario
 - @Managed(uniqueSession=true)
 - @StepGroup
+- @CacheLookup
 
 - разобраться с сообщениями (сделать, чтобы браузер работал в англ. локали)
 - разобраться с драйверами (явно указать необходимый)
