@@ -295,7 +295,7 @@
 		
 		<dependency>
 			<groupId>net.thucydides</groupId>
-			<artifactId>thucydides-junit</artifactId>
+			<artifactId>thucydides-core</artifactId>
 			<version>${thucydides.version}</version>
 			<scope>test</scope>
 			<exclusions>
@@ -303,6 +303,15 @@
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.thucydides</groupId>
+			<artifactId>thucydides-junit</artifactId>
+			<version>${thucydides.version}</version>
+			<scope>test</scope>
+			<exclusions>
 				<!--
 				<exclusion>
 					<groupId>com.opera</groupId>
