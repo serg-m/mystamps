@@ -36,7 +36,9 @@ import ru.mystamps.web.tests.it.step.AnonymousSteps;
 
 import static ru.mystamps.web.tests.TranslationUtils.tr;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 @RunWith(ThucydidesRunner.class)
 @Story(Site.Account.Registration.class)
@@ -64,7 +66,7 @@ public class AccountRegistration {
 		ActivateAccountPage page = anonymousSteps.registerUser("coder@rock.home");
 		
 		// TODO: move assertion to Step?
-		assertThat(page.getSuccessfulMessageText()).isEqualTo(tr("t_activation_sent_message"));
+		assertThat(page.getSuccessfulMessageText(), is(equalTo(tr("t_activation_sent_message"))));
 	}
 	
 }

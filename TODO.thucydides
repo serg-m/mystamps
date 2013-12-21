@@ -1,5 +1,4 @@
 
-- использовать assertThat() + hamcrest
 - изучить net.thucydides.core.pages.PageObject
 - изучить net.thucydides.core.steps.ScenarioSteps
 - что делает getPages().currentPageAt(HomePage.class)
