@@ -82,6 +82,22 @@ public class AccountRegistration {
 		
 		assertThat(page.getErrorForEmailField(), is(equalTo(tr("value.too-long", EMAIL_MAX_LENGTH))));
 	}
+
+	// NOTE: Unfortunately JUnit doesn't have something similar to TestNG's @DataProvider.
+	// All implementations which I know require own Runner. Because of that we have
+	// duplicated checks.
+	@Test
+	public void anonymousUserCannotRegisterAccountWhenEmailIsInvalid() {
+		String expectedErrorMessage = tr("ru.mystamps.web.validation.jsr303.Email.message");
+		
+		anonymousSteps.openAccountRegistrationPage();
+		
+		AccountRegistrationPage page = anonymousSteps.registerUserWithErrors("login");
+		assertThat(page.getErrorForEmailField(), is(equalTo(expectedErrorMessage)));
+		
+		page = anonymousSteps.registerUserWithErrors("login@domain");
+		assertThat(page.getErrorForEmailField(), is(equalTo(expectedErrorMessage)));
+	}
 	
 	@Test
 	public void emailShouldBeStripedFromLeadingAndTrailingSpacesDuringRegistration() {
