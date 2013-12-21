@@ -99,6 +99,7 @@ public class AccountRegistration {
 		assertThat(page.getErrorForEmailField(), is(equalTo(expectedErrorMessage)));
 	}
 	
+	// NOTE: this test will fail in FF because incorrect value won't be send to the server
 	@Test
 	public void emailShouldBeStripedFromLeadingAndTrailingSpacesDuringRegistration() {
 		anonymousSteps.openAccountRegistrationPage();
