@@ -22,9 +22,6 @@ import static org.fest.assertions.api.Assertions.assertThat;
 import static ru.mystamps.web.tests.TranslationUtils.tr;
 import static ru.mystamps.web.tests.TranslationUtils.stripHtmlTags;
 import static ru.mystamps.web.tests.fest.AbstractPageWithFormAssert.assertThat;
-import static ru.mystamps.web.validation.ValidationRules.EMAIL_MAX_LENGTH;
-
-import org.apache.commons.lang3.StringUtils;
 
 import ru.mystamps.web.Url;
 import ru.mystamps.web.tests.page.RegisterAccountPage;
@@ -54,24 +51,10 @@ public class WhenAnonymousUserRegisterAccount
 			.isTrue();
 	}
 	
-	public void emailShouldNotBeTooLong() {
-		page.registerUser(StringUtils.repeat("0", EMAIL_MAX_LENGTH) + "@mail.ru");
-		
-		assertThat(page)
-			.field("email")
-			.hasError(tr("value.too-long", EMAIL_MAX_LENGTH));
-	}
-	
 	public void emailShouldBeValid(String invalidEmail, String expectedMessage) {
 		page.registerUser(invalidEmail);
 		
 		assertThat(page).field("email").hasError(expectedMessage);
-	}
-	
-	public void emailShouldBeStripedFromLeadingAndTrailingSpaces() {
-		page.registerUser(" test ");
-		
-		assertThat(page).field("email").hasValue("test");
 	}
 	
 	public Object[][] getInvalidEmails() {

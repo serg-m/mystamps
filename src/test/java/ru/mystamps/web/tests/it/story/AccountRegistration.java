@@ -17,8 +17,7 @@
  */
 package ru.mystamps.web.tests.it.story;
 
-import org.junit.runner.RunWith;
-import org.junit.Test;
+import org.apache.commons.lang3.StringUtils;
 
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
@@ -27,14 +26,19 @@ import net.thucydides.core.annotations.Story;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 import org.openqa.selenium.WebDriver;
 
 import ru.mystamps.web.Url;
 import ru.mystamps.web.tests.it.Site;
+import ru.mystamps.web.tests.it.page.AccountRegistrationPage;
 import ru.mystamps.web.tests.it.page.ActivateAccountPage;
 import ru.mystamps.web.tests.it.step.AnonymousSteps;
 
 import static ru.mystamps.web.tests.TranslationUtils.tr;
+import static ru.mystamps.web.validation.ValidationRules.EMAIL_MAX_LENGTH;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -67,6 +71,25 @@ public class AccountRegistration {
 		
 		// TODO: move assertion to Step?
 		assertThat(page.getSuccessfulMessageText(), is(equalTo(tr("t_activation_sent_message"))));
+	}
+	
+	@Test
+	public void anonymousUserCannotRegisterAccountWhenEmailIsTooLong() {
+		anonymousSteps.openAccountRegistrationPage();
+
+		String longEmail = StringUtils.repeat("0", EMAIL_MAX_LENGTH) + "@mail.ru";
+		AccountRegistrationPage page = anonymousSteps.registerUserWithErrors(longEmail);
+		
+		assertThat(page.getErrorForEmailField(), is(equalTo(tr("value.too-long", EMAIL_MAX_LENGTH))));
+	}
+	
+	@Test
+	public void emailShouldBeStripedFromLeadingAndTrailingSpacesDuringRegistration() {
+		anonymousSteps.openAccountRegistrationPage();
+		
+		AccountRegistrationPage page = anonymousSteps.registerUserWithErrors(" test ");
+		
+		assertThat(page.getValueOfEmailField(), is(equalTo("test")));
 	}
 	
 }

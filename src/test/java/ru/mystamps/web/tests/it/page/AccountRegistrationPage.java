@@ -33,6 +33,9 @@ public class AccountRegistrationPage extends PageObject {
 	@FindBy(name = "email")
 	WebElement emailField;
 	
+	@FindBy(id = "email.errors")
+	WebElement emailErrorField;
+	
 	// TODO: set visibility
 	@FindBy(xpath = "//input[@type='submit']")
 	WebElement submitButton;
@@ -46,4 +49,11 @@ public class AccountRegistrationPage extends PageObject {
 		submitButton.click();
 	}
 	
+	public String getErrorForEmailField() {
+		return emailErrorField.getText();
+	}
+
+	public String getValueOfEmailField() {
+		return emailField.getAttribute("value");
+	}
 }

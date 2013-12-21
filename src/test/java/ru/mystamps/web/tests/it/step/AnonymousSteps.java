@@ -39,4 +39,11 @@ public class AnonymousSteps extends ScenarioSteps {
 		return new ActivateAccountPage(getDriver());
 	}
 	
+	public AccountRegistrationPage registerUserWithErrors(String email) {
+		AccountRegistrationPage page = getPages().get(AccountRegistrationPage.class);
+		page.registerUser(email);
+
+		return new AccountRegistrationPage(getDriver());
+	}
+	
 }
