@@ -38,7 +38,7 @@
 		<bootstrap.version>2.3.1</bootstrap.version>
 		<jquery.version>1.9.1</jquery.version>
 		
-		<junit.version>4.10</junit.version>
+		<junit.version>4.11</junit.version>
 		<spock.version>0.7-groovy-2.0</spock.version>
 		<cglib.version>2.2.2</cglib.version>
 		<groovy.version>2.0.8</groovy.version>
