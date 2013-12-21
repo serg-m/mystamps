@@ -23,3 +23,6 @@
 - https://github.com/thucydides-webtests/thucydides/wiki
 - https://github.com/thucydides-webtests/thucydides/wiki/Getting-Started
 
+- Wiki: удалить testng, fest-assert, добавить junit, hamcrest
+- настройка IDEA: удалить testng, fest-assert
+
