@@ -42,7 +42,7 @@
 		<groovy.version>2.0.8</groovy.version>
 		<fest.assert.version>2.0M8</fest.assert.version>
 		
-		<java.version>1.6</java.version>
+		<java.version>1.7</java.version>
 		
 		<jetty.host>127.0.0.1</jetty.host>
 		<jetty.port>8081</jetty.port>
@@ -688,6 +688,9 @@
 						</goals>
 						<configuration>
 							<rules>
+								<requireJavaVersion>
+									<version>1.7</version>
+								</requireJavaVersion>
 								<bannedDependencies>
 									<excludes>
 										<!-- Because we use jcl-over-slf4j instead -->
