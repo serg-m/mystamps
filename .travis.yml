@@ -1,5 +1,7 @@
 language: java
-script: mvn verify jasmine:test
+script:
+  - mvn verify jasmine:test
+  - mvn -Pit clean verify thucydides:aggregate
 
 jdk:
   - openjdk6
