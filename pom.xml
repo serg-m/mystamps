@@ -13,8 +13,10 @@
 		<hibernate.version>4.1.11.Final</hibernate.version>
 		<hibernate.validator.version>5.0.0.Alpha1</hibernate.validator.version>
 		<lombok.version>1.12.6</lombok.version>
+		<junit.version>4.11</junit.version>
 		<mysql.connector.version>5.1.30</mysql.connector.version>
 		<selenium.version>2.41.0</selenium.version>
+		<thucydides.version>0.9.235</thucydides.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<spring.version>3.2.5.RELEASE</spring.version>
 		<spring.data.version>1.5.1.RELEASE</spring.data.version>
@@ -265,6 +267,13 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>${testng.version}</version>
@@ -336,6 +345,13 @@
 					<artifactId>selenium-safari-driver</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.thucydides</groupId>
+			<artifactId>thucydides-core</artifactId>
+			<version>${thucydides.version}</version>
+			<scope>test</scope>
 		</dependency>
 		
 		<dependency>
