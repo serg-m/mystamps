@@ -327,30 +327,6 @@
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
-				<exclusion>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-android-driver</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-chrome-driver</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-firefox-driver</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-ie-driver</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-iphone-driver</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-safari-driver</artifactId>
-				</exclusion>
 			</exclusions>
 		</dependency>
 		
@@ -556,35 +532,6 @@
 				<groupId>com.github.searls</groupId>
 				<artifactId>jasmine-maven-plugin</artifactId>
 				<version>${jasmine.plugin.version}</version>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${failsafe.plugin.version}</version>
-				<configuration>
-					<useFile>false</useFile>
-					<disableXmlReport>true</disableXmlReport>
-					<suiteXmlFiles>
-						<suiteXmlFile>${basedir}/src/test/config/testng.xml</suiteXmlFile>
-					</suiteXmlFiles>
-					<skipTests>${skipTests}</skipTests>
-				</configuration>
-				<executions>
-					<execution>
-						<id>integration-test</id>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			
-			<plugin>
-				<groupId>net.thucydides.maven.plugins</groupId>
-				<artifactId>maven-thucydides-plugin</artifactId>
-				<version>${thucydides.plugin.version}</version>
 			</plugin>
 			
 			<plugin>
@@ -825,6 +772,75 @@
 			<properties>
 				<env.dir>${basedir}/src/main/resources/test</env.dir>
 			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>${failsafe.plugin.version}</version>
+						<configuration>
+							<useFile>false</useFile>
+							<disableXmlReport>true</disableXmlReport>
+							<suiteXmlFiles>
+								<suiteXmlFile>${basedir}/src/test/config/testng.xml</suiteXmlFile>
+							</suiteXmlFiles>
+							<skipTests>${skipTests}</skipTests>
+						</configuration>
+						<executions>
+							<execution>
+								<id>integration-test</id>
+								<goals>
+									<goal>integration-test</goal>
+									<goal>verify</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
+			<id>it</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<env.dir>${basedir}/src/main/resources/test</env.dir>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>${failsafe.plugin.version}</version>
+						<configuration>
+							<useFile>false</useFile>
+							<disableXmlReport>true</disableXmlReport>
+							<testSourceDirectory>src/test/groovy</testSourceDirectory>
+							<!-- Run junit tests only (see #SUREFIRE-377) -->
+							<testNGArtifactName>none:none</testNGArtifactName>
+							<includes>
+								<include>**/it/story/*</include>
+							</includes>
+						</configuration>
+						<executions>
+							<execution>
+								<id>integration-test</id>
+								<goals>
+									<goal>integration-test</goal>
+									<goal>verify</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>net.thucydides.maven.plugins</groupId>
+						<artifactId>maven-thucydides-plugin</artifactId>
+						<version>${thucydides.plugin.version}</version>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		
 	</profiles>

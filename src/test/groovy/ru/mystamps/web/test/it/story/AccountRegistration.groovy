@@ -30,7 +30,7 @@ import ru.mystamps.web.test.it.Site
 class AccountRegistration {
 	
 	@Test
-	def "anonymous user registers an account"() {
+	void anonymousUserRegistersAnAccount() {
 		println "TODO: anonymous user registers an account"
 		// TODO: implement
 	}
