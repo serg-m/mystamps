@@ -285,6 +285,13 @@
 			<artifactId>spock-core</artifactId>
 			<version>${spock.version}</version>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<!-- Because it was superseded by junit:junit since 4.11 -->
+					<groupId>junit</groupId>
+					<artifactId>junit-dep</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		
 		<!-- For mocking of non-interface types -->
@@ -350,6 +357,26 @@
 		<dependency>
 			<groupId>net.thucydides</groupId>
 			<artifactId>thucydides-core</artifactId>
+			<version>${thucydides.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<!-- Because we use jcl-over-slf4j instead -->
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+				<exclusion>
+					<!-- Because it was superseded by junit:junit since 4.11 -->
+					<groupId>junit</groupId>
+					<artifactId>junit-dep</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- For ThucydidesRunner -->
+		<dependency>
+			<groupId>net.thucydides</groupId>
+			<artifactId>thucydides-junit</artifactId>
 			<version>${thucydides.version}</version>
 			<scope>test</scope>
 		</dependency>
@@ -717,6 +744,9 @@
 									<excludes>
 										<!-- Because we use jcl-over-slf4j instead -->
 										<exclude>commons-logging</exclude>
+										
+										<!-- Because it was superseded by junit:junit since 4.11 -->
+										<exclude>junit:junit-dep</exclude>
 									</excludes>
 								</bannedDependencies>
 							</rules>

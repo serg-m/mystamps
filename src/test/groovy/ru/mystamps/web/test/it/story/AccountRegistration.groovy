@@ -18,16 +18,20 @@
 package ru.mystamps.web.test.it.story
 
 import net.thucydides.core.annotations.Story
+import net.thucydides.junit.runners.ThucydidesRunner
 
 import org.junit.Test
+import org.junit.runner.RunWith
 
 import ru.mystamps.web.test.it.Site
 
+@RunWith(ThucydidesRunner.class)
 @Story(Site.Account.Registration.class)
 class AccountRegistration {
 	
 	@Test
 	def "anonymous user registers an account"() {
+		println "TODO: anonymous user registers an account"
 		// TODO: implement
 	}
 	
