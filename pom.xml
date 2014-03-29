@@ -16,7 +16,7 @@
 		<junit.version>4.11</junit.version>
 		<mysql.connector.version>5.1.30</mysql.connector.version>
 		<selenium.version>2.41.0</selenium.version>
-		<thucydides.version>0.9.235</thucydides.version>
+		<thucydides.version>0.9.237</thucydides.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<spring.version>3.2.5.RELEASE</spring.version>
 		<spring.data.version>1.5.1.RELEASE</spring.data.version>
@@ -60,7 +60,7 @@
 		<gmaven.runtime.plugin.version>1.5</gmaven.runtime.plugin.version>
 		<jasmine.plugin.version>1.3.1.4</jasmine.plugin.version>
 		<failsafe.plugin.version>2.17</failsafe.plugin.version>
-		<thucydides.plugin.version>0.9.235</thucydides.plugin.version>
+		<thucydides.plugin.version>0.9.237</thucydides.plugin.version>
 		<jetty.plugin.version>8.1.14.v20131031</jetty.plugin.version>
 		<liquibase.plugin.version>3.0.8</liquibase.plugin.version>
 		<license.plugin.version>1.9.0</license.plugin.version>
