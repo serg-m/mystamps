@@ -66,6 +66,8 @@
 		<license.plugin.version>1.9.0</license.plugin.version>
 		<checkstyle.plugin.version>2.13</checkstyle.plugin.version>
 		<pmd.plugin.version>3.3</pmd.plugin.version>
+		<codenarc.version>0.21</codenarc.version>
+		<codenarc.plugin.version>0.18-1</codenarc.plugin.version>
 		<jacoco.plugin.version>0.6.4.201312101107</jacoco.plugin.version>
 		<coveralls.plugin.version>2.2.0</coveralls.plugin.version>
 		<javadoc.plugin.version>2.10.1</javadoc.plugin.version>
@@ -752,6 +754,21 @@
 					<rulesets>
 						<ruleset>${basedir}/src/main/config/pmd.xml</ruleset>
 					</rulesets>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>codenarc-maven-plugin</artifactId>
+				<version>${codenarc.plugin.version}</version>
+				<configuration>
+					<sourceDirectory>src/test/groovy</sourceDirectory>
+					<groovyVersion>${groovy.version}</groovyVersion>
+					<codeNarcVersion>${codenarc.version}</codeNarcVersion>
+					<!--
+					<rulesetfiles>rulesets/basic.xml,rulesets/braces.xml,rulesets/concurrency.xml,rulesets/convention.xml,rulesets/design.xml,rulesets/dry.xml,rulesets/enhanced.xml,rulesets/exceptions.xml,rulesets/formatting.xml,rulesets/generic.xml,rulesets/groovyism.xml,rulesets/imports.xml,rulesets/junit.xml,rulesets/logging.xml,rulesets/naming.xml,rulesets/security.xml,rulesets/serialization.xml,rulesets/size.xml,rulesets/unnecessary.xml,rulesets/unused.xml</rulesetfiles>
+					-->
+					<rulesetfiles>rulesets/basic.xml,rulesets/braces.xml,rulesets/concurrency.xml,rulesets/convention.xml,rulesets/design.xml,rulesets/dry.xml,rulesets/exceptions.xml,rulesets/formatting.xml,rulesets/generic.xml,rulesets/groovyism.xml,rulesets/imports.xml,rulesets/logging.xml,rulesets/naming.xml,rulesets/security.xml,rulesets/serialization.xml,rulesets/unnecessary.xml,rulesets/unused.xml</rulesetfiles>
 				</configuration>
 			</plugin>
 			
