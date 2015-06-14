@@ -44,11 +44,6 @@ public class WhenAnonymousUserAtIndexPage extends WhenAnyUserAtAnyPage<IndexSite
 	}
 	
 	@Test(groups = "misc", dependsOnGroups = "std")
-	public void shouldAbsentWelcomeText() {
-		assertThat(page.textPresent(tr("t_you_may"))).isFalse();
-	}
-	
-	@Test(groups = "misc", dependsOnGroups = "std")
 	public void linkForAddingSeriesShouldBeAbsent() {
 		assertThat(page.linkWithLabelExists(tr("t_add_series")))
 			.overridingErrorMessage("should absent link to page for adding series of stamps")

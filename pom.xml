@@ -15,6 +15,7 @@
 		<lombok.version>1.14.8</lombok.version>
 		<mysql.connector.version>5.1.33</mysql.connector.version>
 		<selenium.version>2.43.1</selenium.version>
+		<serenity.version>1.0.53</serenity.version>
 		<subethasmtp.version>3.1.7</subethasmtp.version>
 		<slf4j.version>1.7.9</slf4j.version>
 		<spring.version>4.1.6.RELEASE</spring.version>
@@ -43,6 +44,8 @@
 		<jquery.version>1.9.1</jquery.version>
 		
 		<testng.version>6.8.8</testng.version>
+		<junit.version>4.12</junit.version>
+		<hamcrest.version>1.3</hamcrest.version>
 		<spock.version>0.7-groovy-2.0</spock.version>
 		<cglib.version>2.2.2</cglib.version>
 		<groovy.version>2.0.8</groovy.version>
@@ -319,6 +322,20 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>${hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.spockframework</groupId>
 			<artifactId>spock-core</artifactId>
 			<version>${spock.version}</version>
@@ -368,6 +385,20 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>net.serenity-bdd</groupId>
+			<artifactId>serenity-junit</artifactId>
+			<version>${serenity.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<!-- Because we use jcl-over-slf4j instead -->
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>${selenium.version}</version>
@@ -384,23 +415,7 @@
 				</exclusion>
 				<exclusion>
 					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-chrome-driver</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-firefox-driver</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-ie-driver</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.seleniumhq.selenium</groupId>
 					<artifactId>selenium-iphone-driver</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-safari-driver</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -609,10 +624,12 @@
 				<configuration>
 					<useFile>false</useFile>
 					<disableXmlReport>true</disableXmlReport>
-					<suiteXmlFiles>
-						<suiteXmlFile>${basedir}/src/test/config/testng.xml</suiteXmlFile>
-					</suiteXmlFiles>
 					<skipTests>${skipTests}</skipTests>
+					<includes>
+						<include>ru/mystamps/web/it/story/*.java</include>
+					</includes>
+					<!-- Run junit tests only (see #SUREFIRE-377) -->
+					<testNGArtifactName>none:none</testNGArtifactName>
 				</configuration>
 				<executions>
 					<execution>
@@ -620,6 +637,21 @@
 						<goals>
 							<goal>integration-test</goal>
 							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>net.serenity-bdd.maven.plugins</groupId>
+				<artifactId>serenity-maven-plugin</artifactId>
+				<version>${serenity.version}</version>
+				<executions>
+					<execution>
+						<id>generate-serenity-report</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>aggregate</goal>
 						</goals>
 					</execution>
 				</executions>
