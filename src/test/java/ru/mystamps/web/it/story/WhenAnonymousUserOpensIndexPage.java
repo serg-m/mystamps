@@ -31,7 +31,7 @@ import ru.mystamps.web.it.step.AnonymousSteps;
 @RunWith(SerenityRunner.class)
 public class WhenAnonymousUserOpensIndexPage {
 	
-	@Managed
+	@Managed(uniqueSession = true)
 	private WebDriver driver;
 	
 	@Steps
