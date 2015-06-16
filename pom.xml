@@ -630,6 +630,7 @@
 					</includes>
 					<systemProperties>
 						<webdriver.driver>htmlunit</webdriver.driver>
+						<firefox.preferences>intl.accept_languages=en,en-us</firefox.preferences>
 					</systemProperties>
 					<!-- Run junit tests only (see #SUREFIRE-377) -->
 					<testNGArtifactName>none:none</testNGArtifactName>
