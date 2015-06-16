@@ -17,8 +17,6 @@
  */
 package ru.mystamps.web.tests.cases;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -41,27 +39,6 @@ public class WhenAnonymousUserAtIndexPage extends WhenAnyUserAtAnyPage<IndexSite
 	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
 		checkStandardStructure();
-	}
-	
-	@Test(groups = "misc", dependsOnGroups = "std")
-	public void linkForAddingSeriesShouldBeAbsent() {
-		assertThat(page.linkWithLabelExists(tr("t_add_series")))
-			.overridingErrorMessage("should absent link to page for adding series of stamps")
-			.isFalse();
-	}
-	
-	@Test(groups = "misc", dependsOnGroups = "std")
-	public void linkForAddingCategoriesShouldBeAbsent() {
-		assertThat(page.linkWithLabelExists(tr("t_create_category")))
-			.overridingErrorMessage("should absent link to page for adding categories")
-			.isFalse();
-	}
-	
-	@Test(groups = "misc", dependsOnGroups = "std")
-	public void linkForAddingCountriesShouldBeAbsent() {
-		assertThat(page.linkWithLabelExists(tr("t_add_country")))
-			.overridingErrorMessage("should absent link to page for adding countries")
-			.isFalse();
 	}
 	
 }

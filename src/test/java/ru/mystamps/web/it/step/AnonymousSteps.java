@@ -39,4 +39,19 @@ public class AnonymousSteps {
 		assertThat(indexPage.hasTitleForActions(), is(false));
 	}
 	
+	@Step
+	public void cannnotSeeLinkForAddingSeries() {
+		assertThat(indexPage.linkForAddingSeriesIsPresent(), is(false));
+	}
+	
+	@Step
+	public void cannnotSeeLinkForAddingCategories() {
+		assertThat(indexPage.linkForAddingCategoriesIsPresent(), is(false));
+	}
+	
+	@Step
+	public void cannnotSeeLinkForAddingCountries() {
+		assertThat(indexPage.linkForAddingCountriesIsPresent(), is(false));
+	}
+	
 }

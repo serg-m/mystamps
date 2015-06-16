@@ -20,6 +20,8 @@ package ru.mystamps.web.it.page;
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.DefaultUrl;
 
+import org.openqa.selenium.By;
+
 import ru.mystamps.web.Url;
 
 import static ru.mystamps.web.tests.TranslationUtils.tr;
@@ -29,6 +31,22 @@ public class IndexPage extends PageObject {
 	
 	public boolean hasTitleForActions() {
 		return containsText(tr("t_you_may"));
+	}
+	
+	public boolean linkForAddingSeriesIsPresent() {
+		return isLinkWithTextPresent(tr("t_add_series"));
+	}
+	
+	public boolean linkForAddingCategoriesIsPresent() {
+		return isLinkWithTextPresent(tr("t_create_category"));
+	}
+	
+	public boolean linkForAddingCountriesIsPresent() {
+		return isLinkWithTextPresent(tr("t_add_country"));
+	}
+	
+	private boolean isLinkWithTextPresent(String linkText) {
+		return !findAll(By.linkText(linkText)).isEmpty();
 	}
 	
 }
