@@ -30,7 +30,7 @@ import org.apache.commons.io.IOUtils;
 public final class TranslationUtils {
 	
 	private static final String [] PROPERTIES_FILE_NAMES = new String[] {
-		"ru/mystamps/i18n/Messages.properties",
+		"ru/mystamps/i18n/Messages_ru.properties", // TODO
 		"ru/mystamps/i18n/ValidationMessages.properties",
 		"ru/mystamps/i18n/SpringSecurityMessages.properties"
 	};

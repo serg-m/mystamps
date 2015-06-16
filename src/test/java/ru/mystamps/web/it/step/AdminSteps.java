@@ -19,16 +19,17 @@ package ru.mystamps.web.it.step;
 
 import net.thucydides.core.annotations.Step;
 
-import ru.mystamps.web.it.page.AuthPage;
+import org.junit.After;
+import org.junit.Before;
+
 import ru.mystamps.web.it.page.IndexPage;
 
 import static org.junit.Assert.assertThat;
 
 import static org.hamcrest.core.Is.is;
 
-public class AnonymousSteps {
+public class AdminSteps {
 	
-	private AuthPage authPage;
 	private IndexPage indexPage;
 	
 	@Step
@@ -37,28 +38,28 @@ public class AnonymousSteps {
 	}
 	
 	@Step
-	public void cannnotSeeTitleForActions() {
-		assertThat(indexPage.hasTitleForActions(), is(false));
+	public void seesTitleForActions() {
+		assertThat(indexPage.hasTitleForActions(), is(true));
 	}
 	
 	@Step
-	public void cannnotSeeLinkForAddingSeries() {
-		assertThat(indexPage.linkForAddingSeriesIsPresent(), is(false));
+	public void seesLinkForAddingSeries() {
+		assertThat(indexPage.linkForAddingSeriesIsPresent(), is(true));
 	}
 	
 	@Step
-	public void cannnotSeeLinkForAddingCategories() {
-		assertThat(indexPage.linkForAddingCategoriesIsPresent(), is(false));
+	public void seesLinkForAddingCategories() {
+		assertThat(indexPage.linkForAddingCategoriesIsPresent(), is(true));
 	}
 	
 	@Step
-	public void cannnotSeeLinkForAddingCountries() {
-		assertThat(indexPage.linkForAddingCountriesIsPresent(), is(false));
+	public void seesLinkForAddingCountries() {
+		assertThat(indexPage.linkForAddingCountriesIsPresent(), is(true));
 	}
 	
 	@Step
-	public void loginAsAdmin() {
-		authPage.loginAsAdmin();
+	public void logout() {
+		indexPage.logout();
 	}
 	
 }

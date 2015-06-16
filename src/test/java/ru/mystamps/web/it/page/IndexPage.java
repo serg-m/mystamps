@@ -21,6 +21,8 @@ import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.DefaultUrl;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 
 import ru.mystamps.web.Url;
 
@@ -29,8 +31,20 @@ import static ru.mystamps.web.tests.TranslationUtils.tr;
 @DefaultUrl(Url.SITE)
 public class IndexPage extends PageObject {
 	
+	private static final String LOGOUT_BUTTON_XPATH = "//form[@id=\"LogoutForm\"]/input[@type=\"submit\"]";
+	
 	public boolean hasTitleForActions() {
 		return containsText(tr("t_you_may"));
+	}
+	
+	public void logout() {
+		try {
+			WebElement logoutButton = find(By.xpath(LOGOUT_BUTTON_XPATH));
+			logoutButton.submit();
+			
+		} catch (NoSuchElementException ignored) {
+			// if there is no logout button most likely it means that we are already logged out
+		}
 	}
 	
 	public boolean linkForAddingSeriesIsPresent() {
