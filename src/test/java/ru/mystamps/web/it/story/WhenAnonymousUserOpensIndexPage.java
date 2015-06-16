@@ -40,25 +40,25 @@ public class WhenAnonymousUserOpensIndexPage {
 	@Test
 	public void shouldNotSeeTitleForActions() {
 		anonymous.opensIndexPage();
-		anonymous.cannnotSeeTitleForActions();
+		anonymous.cannotSeeTitleForActions();
 	}
 	
 	@Test
 	public void shouldNotSeeLinkForAddingSeries() {
 		anonymous.opensIndexPage();
-		anonymous.cannnotSeeLinkForAddingSeries();
+		anonymous.cannotSeeLinkForAddingSeries();
 	}
 	
 	@Test
 	public void shouldNotSeeLinkForAddingCategories() {
 		anonymous.opensIndexPage();
-		anonymous.cannnotSeeLinkForAddingCategories();
+		anonymous.cannotSeeLinkForAddingCategories();
 	}
 	
 	@Test
 	public void shouldNotSeeLinkForAddingCountries() {
 		anonymous.opensIndexPage();
-		anonymous.cannnotSeeLinkForAddingCountries();
+		anonymous.cannotSeeLinkForAddingCountries();
 	}
 	
 }
