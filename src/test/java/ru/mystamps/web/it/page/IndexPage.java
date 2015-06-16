@@ -28,7 +28,7 @@ import ru.mystamps.web.Url;
 
 import static ru.mystamps.web.tests.TranslationUtils.tr;
 
-@DefaultUrl(Url.SITE)
+@DefaultUrl(Url.SITE + Url.INDEX_PAGE)
 public class IndexPage extends PageObject {
 	
 	private static final String LOGOUT_BUTTON_XPATH = "//form[@id=\"LogoutForm\"]/input[@type=\"submit\"]";
