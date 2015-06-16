@@ -628,6 +628,9 @@
 					<includes>
 						<include>ru/mystamps/web/it/story/*.java</include>
 					</includes>
+					<systemProperties>
+						<webdriver.driver>htmlunit</webdriver.driver>
+					</systemProperties>
 					<!-- Run junit tests only (see #SUREFIRE-377) -->
 					<testNGArtifactName>none:none</testNGArtifactName>
 				</configuration>
