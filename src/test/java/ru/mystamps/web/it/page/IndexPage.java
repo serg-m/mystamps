@@ -31,7 +31,8 @@ import static ru.mystamps.web.tests.TranslationUtils.tr;
 @DefaultUrl(Url.SITE + Url.INDEX_PAGE)
 public class IndexPage extends PageObject {
 	
-	private static final String LOGOUT_BUTTON_XPATH = "//form[@id=\"LogoutForm\"]/input[@type=\"submit\"]";
+	private static final String LOGOUT_BUTTON_XPATH =
+		"//form[@id=\"LogoutForm\"]/input[@type=\"submit\"]";
 	
 	public boolean hasTitleForActions() {
 		return containsText(tr("t_you_may"));
@@ -42,7 +43,7 @@ public class IndexPage extends PageObject {
 			WebElement logoutButton = find(By.xpath(LOGOUT_BUTTON_XPATH));
 			logoutButton.submit();
 			
-		} catch (NoSuchElementException ignored) {
+		} catch (NoSuchElementException ignored) { // NOCHECKSTYLE: EmptyBlockCheck
 			// if there is no logout button most likely it means that we are already logged out
 		}
 	}
