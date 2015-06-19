@@ -640,7 +640,7 @@
 					<disableXmlReport>true</disableXmlReport>
 					<skipTests>${skipTests}</skipTests>
 					<includes>
-						<include>ru/mystamps/web/it/story/*.java</include>
+						<include>ru/mystamps/web/it/story/*/*.java</include>
 					</includes>
 					<systemProperties>
 						<webdriver.driver>htmlunit</webdriver.driver>
