@@ -15,33 +15,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
-package ru.mystamps.web.tests.cases;
+package ru.mystamps.web.it.page;
 
-import java.net.HttpURLConnection;
+import net.serenitybdd.core.pages.PageObject;
+import net.thucydides.core.annotations.DefaultUrl;
 
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import ru.mystamps.web.Url;
 
-import ru.mystamps.web.tests.page.ForbiddenErrorPage;
-
-import static ru.mystamps.web.tests.TranslationUtils.tr;
-
-public class WhenAnonymousUserOpenTogglzConsole extends WhenAnyUserAtAnyPage<ForbiddenErrorPage> {
-	
-	public WhenAnonymousUserOpenTogglzConsole() {
-		super(ForbiddenErrorPage.class);
-		hasTitleWithoutStandardPrefix(tr("t_403_title"));
-		hasResponseServerCode(HttpURLConnection.HTTP_FORBIDDEN);
-	}
-	
-	@BeforeClass
-	public void setUp() {
-		page.open("/togglz");
-	}
-	
-	@Test(groups = "std")
-	public void shouldHaveStandardStructure() {
-		checkStandardStructure();
-	}
-	
+@DefaultUrl(Url.SITE + "/togglz")
+public class TogglzPage extends PageObject {
 }

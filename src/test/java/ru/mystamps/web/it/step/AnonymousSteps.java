@@ -20,16 +20,21 @@ package ru.mystamps.web.it.step;
 import net.thucydides.core.annotations.Step;
 
 import ru.mystamps.web.it.page.AuthPage;
+import ru.mystamps.web.it.page.ForbiddenPage;
 import ru.mystamps.web.it.page.IndexPage;
+import ru.mystamps.web.it.page.TogglzPage;
 
 import static org.junit.Assert.assertThat;
 
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 public class AnonymousSteps {
 	
 	private AuthPage authPage;
 	private IndexPage indexPage;
+	private TogglzPage togglzPage;
+	private ForbiddenPage forbiddenPage;
 	
 	@Step
 	public void openIndexPage() {
@@ -59,6 +64,21 @@ public class AnonymousSteps {
 	@Step
 	public void loginAsUser(String login, String password) {
 		authPage.loginAsUser(login, password);
+	}
+	
+	@Step
+	public void openTogglzConsole() {
+		togglzPage.open();
+	}
+	
+	@Step
+	public void shouldSeeErrorMessage(String errorMessage) {
+		assertThat(forbiddenPage.getErrorMessage(), is(equalTo(errorMessage)));
+	}
+	
+	@Step
+	public void shouldSeeErrorCode(String errorCode) {
+		assertThat(forbiddenPage.getErrorCode(), is(equalTo(errorCode)));
 	}
 	
 }

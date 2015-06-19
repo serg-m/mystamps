@@ -15,33 +15,27 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
-package ru.mystamps.web.tests.cases;
+package ru.mystamps.web.it.page;
 
-import java.net.HttpURLConnection;
+import net.serenitybdd.core.pages.PageObject;
 
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-import ru.mystamps.web.tests.page.ForbiddenErrorPage;
-
-import static ru.mystamps.web.tests.TranslationUtils.tr;
-
-public class WhenAnonymousUserOpenTogglzConsole extends WhenAnyUserAtAnyPage<ForbiddenErrorPage> {
+public class ForbiddenPage extends PageObject {
 	
-	public WhenAnonymousUserOpenTogglzConsole() {
-		super(ForbiddenErrorPage.class);
-		hasTitleWithoutStandardPrefix(tr("t_403_title"));
-		hasResponseServerCode(HttpURLConnection.HTTP_FORBIDDEN);
+	@FindBy(id = "error-msg")
+	private WebElement errorMessage;
+	
+	@FindBy(id = "error-code")
+	private WebElement errorCode;
+	
+	public String getErrorMessage() {
+		return errorMessage.getText();
 	}
 	
-	@BeforeClass
-	public void setUp() {
-		page.open("/togglz");
-	}
-	
-	@Test(groups = "std")
-	public void shouldHaveStandardStructure() {
-		checkStandardStructure();
+	public String getErrorCode() {
+		return errorCode.getText();
 	}
 	
 }

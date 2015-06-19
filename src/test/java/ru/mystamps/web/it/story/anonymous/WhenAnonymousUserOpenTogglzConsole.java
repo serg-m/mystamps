@@ -15,33 +15,40 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
-package ru.mystamps.web.tests.cases;
+package ru.mystamps.web.it.story.anonymous;
 
-import java.net.HttpURLConnection;
+import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Steps;
 
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
-import ru.mystamps.web.tests.page.ForbiddenErrorPage;
+import org.openqa.selenium.WebDriver;
+
+import ru.mystamps.web.it.step.AnonymousSteps;
 
 import static ru.mystamps.web.tests.TranslationUtils.tr;
 
-public class WhenAnonymousUserOpenTogglzConsole extends WhenAnyUserAtAnyPage<ForbiddenErrorPage> {
+@RunWith(SerenityRunner.class)
+public class WhenAnonymousUserOpenTogglzConsole {
 	
-	public WhenAnonymousUserOpenTogglzConsole() {
-		super(ForbiddenErrorPage.class);
-		hasTitleWithoutStandardPrefix(tr("t_403_title"));
-		hasResponseServerCode(HttpURLConnection.HTTP_FORBIDDEN);
+	@Managed(uniqueSession = true)
+	private WebDriver driver;
+	
+	@Steps
+	private AnonymousSteps anonymous;
+	
+	@Test
+	public void shouldSeeErrorMessage() {
+		anonymous.openTogglzConsole();
+		anonymous.shouldSeeErrorMessage(tr("t_403_description"));
 	}
 	
-	@BeforeClass
-	public void setUp() {
-		page.open("/togglz");
-	}
-	
-	@Test(groups = "std")
-	public void shouldHaveStandardStructure() {
-		checkStandardStructure();
+	@Test
+	public void shouldSeeErrorCode() {
+		anonymous.openTogglzConsole();
+		anonymous.shouldSeeErrorCode("403");
 	}
 	
 }
