@@ -17,8 +17,6 @@
  */
 package ru.mystamps.web.tests.cases;
 
-import static org.fest.assertions.api.Assertions.assertThat;
-
 import org.springframework.beans.factory.annotation.Value;
 
 import org.testng.annotations.AfterClass;
@@ -56,32 +54,6 @@ public class WhenUserAtIndexPage extends WhenAnyUserAtAnyPage<IndexSitePage> {
 	@Test(groups = "std")
 	public void shouldHaveStandardStructure() {
 		checkStandardStructure();
-	}
-	
-	@Test(groups = "misc", dependsOnGroups = "std")
-	public void shouldExistsWelcomeText() {
-		assertThat(page.textPresent(tr("t_you_may"))).isTrue();
-	}
-	
-	@Test(groups = "misc", dependsOnGroups = "std")
-	public void shouldExistsLinkForAddingSeries() {
-		assertThat(page.linkWithLabelExists(tr("t_add_series")))
-			.overridingErrorMessage("should exists link to page for adding series of stamps")
-			.isTrue();
-	}
-	
-	@Test(groups = "misc", dependsOnGroups = "std")
-	public void linkForAddingCategoriesShouldBeAbsent() {
-		assertThat(page.linkWithLabelExists(tr("t_create_category")))
-			.overridingErrorMessage("should absent link to page for adding categories")
-			.isFalse();
-	}
-	
-	@Test(groups = "misc", dependsOnGroups = "std")
-	public void linkForAddingCountriesShouldBeAbsent() {
-		assertThat(page.linkWithLabelExists(tr("t_add_country")))
-			.overridingErrorMessage("should absent link to page for adding countries")
-			.isFalse();
 	}
 	
 	@Override
