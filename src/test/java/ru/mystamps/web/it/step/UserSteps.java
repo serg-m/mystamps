@@ -19,15 +19,20 @@ package ru.mystamps.web.it.step;
 
 import net.thucydides.core.annotations.Step;
 
+import ru.mystamps.web.it.page.ForbiddenPage;
 import ru.mystamps.web.it.page.IndexPage;
+import ru.mystamps.web.it.page.TogglzPage;
 
 import static org.junit.Assert.assertThat;
 
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 public class UserSteps {
 	
 	private IndexPage indexPage;
+	private ForbiddenPage forbiddenPage;
+	private TogglzPage togglzPage;
 	
 	@Step
 	public void openIndexPage() {
@@ -57,6 +62,21 @@ public class UserSteps {
 	@Step
 	public void shouldNotSeeLinkForAddingCountries() {
 		assertThat(indexPage.linkForAddingCountriesIsPresent(), is(false));
+	}
+	
+	@Step
+	public void openTogglzConsole() {
+		togglzPage.open();
+	}
+	
+	@Step
+	public void shouldSeeErrorMessage(String errorMessage) {
+		assertThat(forbiddenPage.getErrorMessage(), is(equalTo(errorMessage)));
+	}
+	
+	@Step
+	public void shouldSeeErrorCode(String errorCode) {
+		assertThat(forbiddenPage.getErrorCode(), is(equalTo(errorCode)));
 	}
 	
 }
