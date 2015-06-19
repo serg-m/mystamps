@@ -19,9 +19,6 @@ package ru.mystamps.web.it.step;
 
 import net.thucydides.core.annotations.Step;
 
-import org.junit.After;
-import org.junit.Before;
-
 import ru.mystamps.web.it.page.IndexPage;
 
 import static org.junit.Assert.assertThat;
