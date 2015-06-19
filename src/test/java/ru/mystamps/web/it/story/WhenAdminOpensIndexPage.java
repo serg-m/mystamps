@@ -17,7 +17,11 @@
  */
 package ru.mystamps.web.it.story;
 
-import net.serenitybdd.junit.runners.SerenityRunner;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
+
+import net.serenitybdd.junit.spring.integration.SpringIntegrationSerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 
@@ -28,10 +32,12 @@ import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 
+import ru.mystamps.web.config.TestContext;
 import ru.mystamps.web.it.step.AdminSteps;
 import ru.mystamps.web.it.step.AnonymousSteps;
 
-@RunWith(SerenityRunner.class)
+@RunWith(SpringIntegrationSerenityRunner.class)
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestContext.class)
 public class WhenAdminOpensIndexPage {
 	
 	@Managed(uniqueSession = true)
@@ -43,9 +49,15 @@ public class WhenAdminOpensIndexPage {
 	@Steps
 	private AnonymousSteps anonymous;
 	
+	@Value("${valid_admin_login}")
+	private String adminLogin;
+	
+	@Value("${valid_admin_password}")
+	private String adminPassword;
+	
 	@Before
 	public void loginAsAdmin() {
-		anonymous.loginAsAdmin();
+		anonymous.loginAsUser(adminLogin, adminPassword);
 	}
 	
 	@After

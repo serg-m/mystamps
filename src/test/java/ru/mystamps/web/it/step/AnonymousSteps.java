@@ -57,8 +57,8 @@ public class AnonymousSteps {
 	}
 	
 	@Step
-	public void loginAsAdmin() {
-		authPage.loginAsAdmin();
+	public void loginAsUser(String login, String password) {
+		authPage.loginAsUser(login, password);
 	}
 	
 }

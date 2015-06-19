@@ -37,11 +37,11 @@ public class AuthPage extends PageObject {
 	@FindBy(xpath = "//input[@type=\"submit\"]")
 	private WebElement authButton;
 	
-	public void loginAsAdmin() {
+	public void loginAsUser(String login, String password) {
 		// TODO: do authentication only if we haven't authenticated yet
 		open();
-		loginField.sendKeys("admin"); // TODO
-		passwordField.sendKeys("test"); // TODO
+		loginField.sendKeys(login);
+		passwordField.sendKeys(password);
 		authButton.submit();
 	}
 	
