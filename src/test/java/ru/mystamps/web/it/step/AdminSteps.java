@@ -30,27 +30,27 @@ public class AdminSteps {
 	private IndexPage indexPage;
 	
 	@Step
-	public void opensIndexPage() {
+	public void openIndexPage() {
 		indexPage.open();
 	}
 	
 	@Step
-	public void seesTitleForActions() {
+	public void shouldSeeTitleForActions() {
 		assertThat(indexPage.hasTitleForActions(), is(true));
 	}
 	
 	@Step
-	public void seesLinkForAddingSeries() {
+	public void shouldSeeLinkForAddingSeries() {
 		assertThat(indexPage.linkForAddingSeriesIsPresent(), is(true));
 	}
 	
 	@Step
-	public void seesLinkForAddingCategories() {
+	public void shouldSeeLinkForAddingCategories() {
 		assertThat(indexPage.linkForAddingCategoriesIsPresent(), is(true));
 	}
 	
 	@Step
-	public void seesLinkForAddingCountries() {
+	public void shouldSeeLinkForAddingCountries() {
 		assertThat(indexPage.linkForAddingCountriesIsPresent(), is(true));
 	}
 	

@@ -29,7 +29,7 @@ import org.openqa.selenium.WebDriver;
 import ru.mystamps.web.it.step.AnonymousSteps;
 
 @RunWith(SerenityRunner.class)
-public class WhenAnonymousUserOpensIndexPage {
+public class WhenAnonymousUserOpenIndexPage {
 	
 	@Managed(uniqueSession = true)
 	private WebDriver driver;
@@ -39,26 +39,26 @@ public class WhenAnonymousUserOpensIndexPage {
 	
 	@Test
 	public void shouldNotSeeTitleForActions() {
-		anonymous.opensIndexPage();
-		anonymous.cannotSeeTitleForActions();
+		anonymous.openIndexPage();
+		anonymous.shouldNotSeeTitleForActions();
 	}
 	
 	@Test
 	public void shouldNotSeeLinkForAddingSeries() {
-		anonymous.opensIndexPage();
-		anonymous.cannotSeeLinkForAddingSeries();
+		anonymous.openIndexPage();
+		anonymous.shouldNotSeeLinkForAddingSeries();
 	}
 	
 	@Test
 	public void shouldNotSeeLinkForAddingCategories() {
-		anonymous.opensIndexPage();
-		anonymous.cannotSeeLinkForAddingCategories();
+		anonymous.openIndexPage();
+		anonymous.shouldNotSeeLinkForAddingCategories();
 	}
 	
 	@Test
 	public void shouldNotSeeLinkForAddingCountries() {
-		anonymous.opensIndexPage();
-		anonymous.cannotSeeLinkForAddingCountries();
+		anonymous.openIndexPage();
+		anonymous.shouldNotSeeLinkForAddingCountries();
 	}
 	
 }

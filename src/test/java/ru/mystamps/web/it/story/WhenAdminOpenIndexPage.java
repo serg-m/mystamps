@@ -38,7 +38,7 @@ import ru.mystamps.web.it.step.AnonymousSteps;
 
 @RunWith(SpringIntegrationSerenityRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestContext.class)
-public class WhenAdminOpensIndexPage {
+public class WhenAdminOpenIndexPage {
 	
 	@Managed(uniqueSession = true)
 	private WebDriver driver;
@@ -67,26 +67,26 @@ public class WhenAdminOpensIndexPage {
 	
 	@Test
 	public void shouldSeeTitleForActions() {
-		admin.opensIndexPage();
-		admin.seesTitleForActions();
+		admin.openIndexPage();
+		admin.shouldSeeTitleForActions();
 	}
 	
 	@Test
 	public void shouldSeeLinkForAddingSeries() {
-		admin.opensIndexPage();
-		admin.seesLinkForAddingSeries();
+		admin.openIndexPage();
+		admin.shouldSeeLinkForAddingSeries();
 	}
 	
 	@Test
 	public void shouldSeeLinkForAddingCategories() {
-		admin.opensIndexPage();
-		admin.seesLinkForAddingCategories();
+		admin.openIndexPage();
+		admin.shouldSeeLinkForAddingCategories();
 	}
 	
 	@Test
 	public void shouldSeeLinkForAddingCountries() {
-		admin.opensIndexPage();
-		admin.seesLinkForAddingCountries();
+		admin.openIndexPage();
+		admin.shouldSeeLinkForAddingCountries();
 	}
 	
 }
