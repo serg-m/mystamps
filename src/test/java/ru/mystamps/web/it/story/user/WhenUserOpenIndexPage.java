@@ -24,6 +24,8 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import net.serenitybdd.junit.spring.integration.SpringIntegrationSerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 
 import org.junit.After;
 import org.junit.Before;
@@ -32,12 +34,17 @@ import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 
+import ru.mystamps.web.Url;
 import ru.mystamps.web.config.TestContext;
 import ru.mystamps.web.it.step.AnonymousSteps;
 import ru.mystamps.web.it.step.UserSteps;
 
 @RunWith(SpringIntegrationSerenityRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = TestContext.class)
+@WithTags({
+	@WithTag("page:/" + Url.INDEX_PAGE),
+	@WithTag("user:authenticated")
+})
 public class WhenUserOpenIndexPage {
 	
 	@Managed(uniqueSession = true)

@@ -20,17 +20,23 @@ package ru.mystamps.web.it.story.anonymous;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.WithTags;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import org.openqa.selenium.WebDriver;
 
+import ru.mystamps.web.Url;
 import ru.mystamps.web.it.step.AnonymousSteps;
 
 import static ru.mystamps.web.tests.TranslationUtils.tr;
 
-@RunWith(SerenityRunner.class)
+@RunWith(SerenityRunner.class)@WithTags({
+	@WithTag("page:" + Url.TOGGLZ_CONSOLE_PAGE),
+	@WithTag("user:anonymous")
+})
 public class WhenAnonymousUserOpenTogglzConsole {
 	
 	@Managed(uniqueSession = true)
