@@ -22,6 +22,6 @@ import net.thucydides.core.annotations.DefaultUrl;
 
 import ru.mystamps.web.Url;
 
-@DefaultUrl(Url.SITE + "/togglz")
+@DefaultUrl(Url.SITE + Url.TOGGLZ_CONSOLE_PAGE)
 public class TogglzPage extends PageObject {
 }
