@@ -28,6 +28,8 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import ru.yandex.qatools.allure.annotations.Parameter;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -126,7 +128,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 	}
 	
 	@Test(groups = "valid", dependsOnGroups = "std", dataProvider = "validCatalogNumbers")
-	public void michelNumbersShouldAcceptValidValues(String numbers, Object whatever) {
+	public void michelNumbersShouldAcceptValidValues(@Parameter("validNumbers") String numbers, Object whatever) {
 		page.showCatalogNumbers();
 		page.fillMichelNumbers(numbers);
 		
@@ -136,7 +138,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 	}
 	
 	@Test(groups = "valid", dependsOnGroups = "std", dataProvider = "validCatalogNumbers")
-	public void scottNumbersShouldAcceptValidValues(String numbers, Object whatever) {
+	public void scottNumbersShouldAcceptValidValues(@Parameter("validNumbers") String numbers, Object whatever) {
 		page.showCatalogNumbers();
 		page.fillScottNumbers(numbers);
 		
@@ -146,7 +148,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 	}
 	
 	@Test(groups = "valid", dependsOnGroups = "std", dataProvider = "validCatalogNumbers")
-	public void yvertNumbersShouldAcceptValidValues(String numbers, Object whatever) {
+	public void yvertNumbersShouldAcceptValidValues(@Parameter("validNumbers") String numbers, Object whatever) {
 		page.showCatalogNumbers();
 		page.fillYvertNumbers(numbers);
 		
@@ -156,7 +158,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 	}
 	
 	@Test(groups = "valid", dependsOnGroups = "std", dataProvider = "validCatalogNumbers")
-	public void gibbonsNumbersShouldAcceptValidValues(String numbers, Object whatever) {
+	public void gibbonsNumbersShouldAcceptValidValues(@Parameter("validNumbers") String numbers, Object whatever) {
 		page.showCatalogNumbers();
 		page.fillGibbonsNumbers(numbers);
 		
@@ -197,7 +199,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 	}
 	
 	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogNumbers")
-	public void michelNumbersShouldRejectInvalidValues(String numbers, String msg) {
+	public void michelNumbersShouldRejectInvalidValues(@Parameter("invalidNumbers") String numbers, @Parameter("expectedMessage") String msg) {
 		page.showCatalogNumbers();
 		page.fillMichelNumbers(numbers);
 		
@@ -207,7 +209,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 	}
 	
 	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogNumbers")
-	public void scottNumbersShouldRejectInvalidValues(String numbers, String msg) {
+	public void scottNumbersShouldRejectInvalidValues(@Parameter("invalidNumbers") String numbers, @Parameter("expectedMessage") String msg) {
 		page.showCatalogNumbers();
 		page.fillScottNumbers(numbers);
 		
@@ -217,7 +219,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 	}
 	
 	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogNumbers")
-	public void yvertNumbersShouldRejectInvalidValues(String numbers, String msg) {
+	public void yvertNumbersShouldRejectInvalidValues(@Parameter("invalidNumbers") String numbers, @Parameter("expectedMessage") String msg) {
 		page.showCatalogNumbers();
 		page.fillYvertNumbers(numbers);
 		
@@ -227,7 +229,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 	}
 	
 	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogNumbers")
-	public void gibbonsNumbersShouldRejectInvalidValues(String numbers, String msg) {
+	public void gibbonsNumbersShouldRejectInvalidValues(@Parameter("invalidNumbers") String numbers, @Parameter("expectedMessage") String msg) {
 		page.showCatalogNumbers();
 		page.fillGibbonsNumbers(numbers);
 		
@@ -237,7 +239,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 	}
 	
 	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogPrices")
-	public void michelPriceShouldRejectInvalidValues(String price, String msg) {
+	public void michelPriceShouldRejectInvalidValues(@Parameter("invalidPrice") String price, @Parameter("expectedMessage") String msg) {
 		page.showCatalogNumbers();
 		page.fillMichelPrice(price);
 		
@@ -247,7 +249,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 	}
 	
 	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogPrices")
-	public void scottPriceShouldRejectInvalidValues(String price, String msg) {
+	public void scottPriceShouldRejectInvalidValues(@Parameter("invalidPrice") String price, @Parameter("expectedMessage") String msg) {
 		page.showCatalogNumbers();
 		page.fillScottPrice(price);
 		
@@ -257,7 +259,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 	}
 	
 	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogPrices")
-	public void yvertPriceShouldRejectInvalidValues(String price, String msg) {
+	public void yvertPriceShouldRejectInvalidValues(@Parameter("invalidPrice") String price, @Parameter("expectedMessage") String msg) {
 		page.showCatalogNumbers();
 		page.fillYvertPrice(price);
 		
@@ -267,7 +269,7 @@ public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPag
 	}
 	
 	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidCatalogPrices")
-	public void gibbonsPriceShouldRejectInvalidValues(String price, String msg) {
+	public void gibbonsPriceShouldRejectInvalidValues(@Parameter("invalidPrice") String price, @Parameter("expectedMessage") String msg) {
 		page.showCatalogNumbers();
 		page.fillGibbonsPrice(price);
 		

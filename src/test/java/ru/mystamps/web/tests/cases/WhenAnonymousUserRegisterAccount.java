@@ -38,6 +38,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
+import ru.yandex.qatools.allure.annotations.Parameter;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -115,7 +116,7 @@ public class WhenAnonymousUserRegisterAccount
 	}
 	
 	@Test(groups = "invalid", dependsOnGroups = "std", dataProvider = "invalidEmails")
-	public void emailShouldBeValid(String invalidEmail, String expectedMessage) {
+	public void emailShouldBeValid(@Parameter("invalidEmail") String invalidEmail, @Parameter("expectedMessage") String expectedMessage) {
 		page.registerUser(invalidEmail);
 		
 		assertThat(page).field("email").hasError(expectedMessage);

@@ -23,6 +23,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import ru.yandex.qatools.allure.annotations.Parameter;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -161,7 +163,7 @@ public class WhenAnonymousUserActivateAccount
 	}
 	
 	@Test(groups = "valid", dependsOnGroups = "std", dataProvider = "validNames")
-	public void nameWithAllowedCharactersShouldBeAccepted(String name, Object whatever) {
+	public void nameWithAllowedCharactersShouldBeAccepted(@Parameter("validName") String name, Object whatever) {
 		page.activateAccount(null, name, null, null, null);
 		
 		assertThat(page).field("name").hasNoError();
