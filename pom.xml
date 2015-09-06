@@ -679,7 +679,9 @@
 				<configuration>
 					<useFile>false</useFile>
 					<suiteXmlFiles>
-						<suiteXmlFile>${basedir}/src/test/config/testng.xml</suiteXmlFile>
+						<suiteXmlFile>${basedir}/src/test/config/anonymous.xml</suiteXmlFile>
+						<suiteXmlFile>${basedir}/src/test/config/user.xml</suiteXmlFile>
+						<suiteXmlFile>${basedir}/src/test/config/admin.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<skipTests>${skipTests}</skipTests>
 					<argLine>
