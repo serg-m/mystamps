@@ -1,85 +1,85 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Anonymous user">
 	
-	<test name="When anonymous user activate account">
+	<test name="activate account">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserActivateAccount" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user add category">
+	<test name="add category">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserAddCategory" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user open not existing category page">
+	<test name="open not existing category page">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserOpenNotExistingCategoryPage" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user add country">
+	<test name="add country">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserAddCountry" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user open not existing country page">
+	<test name="open not existing country page">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserOpenNotExistingCountryPage" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user add series">
+	<test name="add series">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserAddSeries" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user open not existing series page">
+	<test name="open not existing series page">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserOpenNotExistingSeriesPage" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user at index page">
+	<test name="at index page">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserAtIndexPage" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user authenticates">
+	<test name="authenticates">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserAuthenticates" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user open not existing page">
+	<test name="open not existing page">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserOpenNotExistingPage" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user at unauthorized page">
+	<test name="at unauthorized page">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserAtUnauthorizedPage" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user at forbidden page">
+	<test name="at forbidden page">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserAtForbiddenPage" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user open Togglz console">
+	<test name="open Togglz console">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserOpenTogglzConsole" />
 		</classes>
 	</test>
 	
-	<test name="When anonymous user register account">
+	<test name="register account">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenAnonymousUserRegisterAccount" />
 		</classes>

@@ -1,43 +1,43 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="User">
 	
-	<test name="When user at register account page">
+	<test name="at register account page">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenUserAtRegisterAccountPage" />
 		</classes>
 	</test>
 	
-	<test name="When user at auth page">
+	<test name="at auth page">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenUserAtAuthPage" />
 		</classes>
 	</test>
 	
-	<test name="When user at activate account page">
+	<test name="at activate account page">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenUserAtActivateAccountPage" />
 		</classes>
 	</test>
 	
-	<test name="When user add series">
+	<test name="add series">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenUserAddSeries" />
 		</classes>
 	</test>
 	
-	<test name="When user at index page">
+	<test name="at index page">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenUserAtIndexPage" />
 		</classes>
 	</test>
 	
-	<test name="When user logs out">
+	<test name="logs out">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenUserLogsOut" />
 		</classes>
 	</test>
 	
-	<test name="When user open Togglz console">
+	<test name="open Togglz console">
 		<classes>
 			<class name="ru.mystamps.web.tests.cases.WhenUserOpenTogglzConsole" />
 		</classes>
