@@ -677,10 +677,7 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>${failsafe.plugin.version}</version>
 				<configuration>
-					<!--
 					<useFile>false</useFile>
-					<disableXmlReport>true</disableXmlReport>
-					-->
 					<suiteXmlFiles>
 						<suiteXmlFile>${basedir}/src/test/config/testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
