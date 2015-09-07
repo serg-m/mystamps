@@ -23,6 +23,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Parameter;
 
 import org.testng.annotations.BeforeMethod;
@@ -41,6 +42,7 @@ import static ru.mystamps.web.validation.ValidationRules.NAME_MAX_LENGTH;
 import static ru.mystamps.web.validation.ValidationRules.PASSWORD_MIN_LENGTH;
 import static ru.mystamps.web.validation.ValidationRules.ACT_KEY_LENGTH;
 
+@Features("Account.Activate")
 public class WhenAnonymousUserActivateAccount
 	extends WhenAnyUserAtAnyPageWithForm<ActivateAccountPage> {
 	

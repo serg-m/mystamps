@@ -28,6 +28,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Parameter;
 
 import org.testng.annotations.AfterClass;
@@ -46,6 +47,7 @@ import static ru.mystamps.web.tests.TranslationUtils.tr;
 import static ru.mystamps.web.validation.ValidationRules.MAX_STAMPS_IN_SERIES;
 import static ru.mystamps.web.validation.ValidationRules.MIN_STAMPS_IN_SERIES;
 
+@Features("Series")
 public class WhenUserAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPage> {
 	
 	private static final int SINCE_YEAR     = 1840;

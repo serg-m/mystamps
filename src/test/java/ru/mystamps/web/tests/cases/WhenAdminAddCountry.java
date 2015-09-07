@@ -20,6 +20,9 @@ package ru.mystamps.web.tests.cases;
 import org.apache.commons.lang3.StringUtils;
 
 import org.springframework.beans.factory.annotation.Value;
+
+import ru.yandex.qatools.allure.annotations.Features;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -37,6 +40,7 @@ import static ru.mystamps.web.tests.fest.PageWithFormAssert.assertThat;
 import static ru.mystamps.web.validation.ValidationRules.COUNTRY_NAME_MAX_LENGTH;
 import static ru.mystamps.web.validation.ValidationRules.COUNTRY_NAME_MIN_LENGTH;
 
+@Features("Country")
 public class WhenAdminAddCountry extends WhenAnyUserAtAnyPageWithForm<AddCountryPage> {
 	
 	private static final String TEST_COUNTRY_NAME_EN = "Russia";

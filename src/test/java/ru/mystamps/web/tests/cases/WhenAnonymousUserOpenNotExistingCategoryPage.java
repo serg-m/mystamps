@@ -19,6 +19,8 @@ package ru.mystamps.web.tests.cases;
 
 import java.net.HttpURLConnection;
 
+import ru.yandex.qatools.allure.annotations.Features;
+
 import org.testng.annotations.Test;
 
 import ru.mystamps.web.Url;
@@ -28,6 +30,7 @@ import static ru.mystamps.web.tests.TranslationUtils.tr;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
+@Features("Category")
 public class WhenAnonymousUserOpenNotExistingCategoryPage
 	extends WhenAnyUserAtAnyPage<NotFoundErrorPage> {
 	

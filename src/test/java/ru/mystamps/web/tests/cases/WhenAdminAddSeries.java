@@ -28,6 +28,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Parameter;
 
 import org.testng.annotations.AfterClass;
@@ -53,6 +54,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
  * The main difference between this test and {@link WhenUserAddSeries} is that as admin we have
  * additional field for comment.
  */
+@Features("Series")
 public class WhenAdminAddSeries extends WhenAnyUserAtAnyPageWithForm<AddSeriesPage> {
 	
 	private static final int SINCE_YEAR     = 1840;

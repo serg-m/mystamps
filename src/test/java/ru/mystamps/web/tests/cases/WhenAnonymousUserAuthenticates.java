@@ -20,6 +20,9 @@ package ru.mystamps.web.tests.cases;
 import static org.fest.assertions.api.Assertions.assertThat;
 
 import org.springframework.beans.factory.annotation.Value;
+
+import ru.yandex.qatools.allure.annotations.Features;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -28,6 +31,7 @@ import ru.mystamps.web.tests.page.AuthAccountPage;
 
 import static ru.mystamps.web.tests.TranslationUtils.tr;
 
+@Features("Account.Login")
 public class WhenAnonymousUserAuthenticates extends WhenAnyUserAtAnyPageWithForm<AuthAccountPage> {
 	
 	@Value("${valid_user_login}")

@@ -22,12 +22,16 @@ import static org.fest.assertions.api.Assertions.assertThat;
 import static ru.mystamps.web.tests.TranslationUtils.tr;
 
 import org.springframework.beans.factory.annotation.Value;
+
+import ru.yandex.qatools.allure.annotations.Features;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import ru.mystamps.web.tests.page.ActivateAccountPage;
 
+@Features("Account.Activate")
 public class WhenUserAtActivateAccountPage
 	extends WhenAnyUserAtAnyPageWithForm<ActivateAccountPage> {
 	

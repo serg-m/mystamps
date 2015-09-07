@@ -18,6 +18,9 @@
 package ru.mystamps.web.tests.cases;
 
 import org.springframework.beans.factory.annotation.Value;
+
+import ru.yandex.qatools.allure.annotations.Features;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -28,6 +31,7 @@ import static ru.mystamps.web.tests.TranslationUtils.tr;
 
 import ru.mystamps.web.tests.page.RegisterAccountPage;
 
+@Features("Account.Register")
 public class WhenUserAtRegisterAccountPage
 	extends WhenAnyUserAtAnyPageWithForm<RegisterAccountPage> {
 	

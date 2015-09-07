@@ -18,6 +18,9 @@
 package ru.mystamps.web.tests.cases;
 
 import org.springframework.beans.factory.annotation.Value;
+
+import ru.yandex.qatools.allure.annotations.Features;
+
 import org.testng.annotations.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -27,6 +30,7 @@ import ru.mystamps.web.tests.page.IndexSitePage;
 
 import static ru.mystamps.web.tests.TranslationUtils.tr;
 
+@Features("Account.Logout")
 public class WhenUserLogsOut extends WhenAnyUserAtAnyPage<IndexSitePage> {
 	
 	@Value("${valid_user_login}")

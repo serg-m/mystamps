@@ -21,6 +21,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import ru.yandex.qatools.allure.annotations.Features;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -38,6 +40,7 @@ import static ru.mystamps.web.tests.fest.PageWithFormAssert.assertThat;
 import static ru.mystamps.web.validation.ValidationRules.CATEGORY_NAME_MAX_LENGTH;
 import static ru.mystamps.web.validation.ValidationRules.CATEGORY_NAME_MIN_LENGTH;
 
+@Features("Category")
 public class WhenAdminAddCategory extends WhenAnyUserAtAnyPageWithForm<AddCategoryPage> {
 	
 	private static final String TEST_CATEGORY_NAME_EN = "Space";

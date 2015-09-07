@@ -19,6 +19,8 @@ package ru.mystamps.web.tests.cases;
 
 import java.net.HttpURLConnection;
 
+import ru.yandex.qatools.allure.annotations.Features;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -29,6 +31,7 @@ import static ru.mystamps.web.tests.TranslationUtils.tr;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
+@Features("Category")
 public class WhenAnonymousUserAddCategory extends WhenAnyUserAtAnyPage<UnauthorizedErrorPage> {
 	
 	public WhenAnonymousUserAddCategory() {

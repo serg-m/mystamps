@@ -38,6 +38,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
+import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Parameter;
 
 import org.testng.annotations.AfterClass;
@@ -49,6 +50,7 @@ import org.testng.annotations.Test;
 import ru.mystamps.web.Url;
 import ru.mystamps.web.tests.page.RegisterAccountPage;
 
+@Features("Account.Register")
 public class WhenAnonymousUserRegisterAccount
 	extends WhenAnyUserAtAnyPageWithForm<RegisterAccountPage> {
 	

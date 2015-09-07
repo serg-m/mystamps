@@ -19,6 +19,8 @@ package ru.mystamps.web.tests.cases;
 
 import java.net.HttpURLConnection;
 
+import ru.yandex.qatools.allure.annotations.Features;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -30,6 +32,7 @@ import ru.mystamps.web.Url;
 
 import static ru.mystamps.web.tests.TranslationUtils.tr;
 
+@Features("Country")
 public class WhenAnonymousUserAddCountry extends WhenAnyUserAtAnyPage<UnauthorizedErrorPage> {
 	
 	public WhenAnonymousUserAddCountry() {
