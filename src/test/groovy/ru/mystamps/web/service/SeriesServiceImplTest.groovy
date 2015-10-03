@@ -18,7 +18,8 @@
 package ru.mystamps.web.service
 
 import org.springframework.web.multipart.MultipartFile
-
+import ru.mystamps.web.model.AddImageForm
+import ru.mystamps.web.service.dto.AddImageDto
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -49,14 +50,20 @@ class SeriesServiceImplTest extends Specification {
 	private SeriesService service
 	private AddSeriesForm form
 	private User user
-	
+	private Series series
+	private AddImageDto dto
+
 	def setup() {
 		form = new AddSeriesForm()
 		form.setQuantity(2)
 		form.setPerforated(false)
 		form.setCategory(TestObjects.createCategory())
-		
+
+        dto = new AddImageForm()
+
 		user = TestObjects.createUser()
+
+		series = new Series()
 		
 		imageService.save(_) >> TestObjects.createImage()
 		
@@ -517,7 +524,35 @@ class SeriesServiceImplTest extends Specification {
 				return true
 			}) >> TestObjects.createSeries()
 	}
-	
+
+	//
+	// tests for addImageToSeries()
+	//
+
+	def "addImageToSeries() should throw exception when dto is null"() {
+		when:
+		service.addImageToSeries(null, series, user)
+
+		then:
+		thrown IllegalArgumentException
+	}
+
+	def "addImageToSeries() should throw exception when series is null"() {
+		when:
+		service.addImageToSeries(dto, null, user)
+
+		then:
+		thrown IllegalArgumentException
+	}
+
+	def "addImageToSeries() should throw exception when user is null"() {
+		when:
+		service.addImageToSeries(dto, series, null)
+
+		then:
+		thrown IllegalArgumentException
+	}
+
 	//
 	// Tests for countAll()
 	//
