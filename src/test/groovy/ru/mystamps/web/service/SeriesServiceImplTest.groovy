@@ -565,6 +565,20 @@ class SeriesServiceImplTest extends Specification {
 			}) >> TestObjects.createImage()
 	}
 
+//	def "addImageToSeries() should add image to series"() {
+//		when:
+//			service.addImageToSeries(addImageForm, series, user)
+//		then:
+//			1 * series.addImage(_ as Image)
+//	}
+
+	def "addImageToSeries() should pass entity to series dao"() {
+		when:
+			service.addImageToSeries(addImageForm, series, user)
+		then:
+			1 * seriesDao.save(_ as Series) >> TestObjects.createSeries()
+	}
+
 	//
 	// Tests for countAll()
 	//
