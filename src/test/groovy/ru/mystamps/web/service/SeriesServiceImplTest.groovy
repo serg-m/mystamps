@@ -18,13 +18,13 @@
 package ru.mystamps.web.service
 
 import org.springframework.web.multipart.MultipartFile
-import ru.mystamps.web.model.AddImageForm
-import ru.mystamps.web.service.dto.AddImageDto
+
 import spock.lang.Specification
 import spock.lang.Unroll
 
 import ru.mystamps.web.dao.JdbcSeriesDao
 import ru.mystamps.web.dao.SeriesDao
+import ru.mystamps.web.service.dto.AddImageDto
 import ru.mystamps.web.entity.Category
 import ru.mystamps.web.entity.Country
 import ru.mystamps.web.entity.Currency
@@ -36,6 +36,7 @@ import ru.mystamps.web.entity.Series
 import ru.mystamps.web.entity.User
 import ru.mystamps.web.entity.YvertCatalog
 import ru.mystamps.web.model.AddSeriesForm
+import ru.mystamps.web.model.AddImageForm
 import ru.mystamps.web.service.dto.SitemapInfoDto
 import ru.mystamps.web.tests.DateUtils
 
@@ -51,7 +52,7 @@ class SeriesServiceImplTest extends Specification {
 	private AddSeriesForm form
 	private User user
 	private Series series
-	private AddImageDto dto
+	private AddImageDto addImageForm
 
 	def setup() {
 		form = new AddSeriesForm()
@@ -59,11 +60,11 @@ class SeriesServiceImplTest extends Specification {
 		form.setPerforated(false)
 		form.setCategory(TestObjects.createCategory())
 
-        dto = new AddImageForm()
+        addImageForm = new AddImageForm()
 
 		user = TestObjects.createUser()
 
-		series = new Series()
+		series = TestObjects.createSeries()
 		
 		imageService.save(_) >> TestObjects.createImage()
 		
@@ -526,31 +527,28 @@ class SeriesServiceImplTest extends Specification {
 	}
 
 	//
-	// tests for addImageToSeries()
+	// Tests for addImageToSeries()
 	//
 
 	def "addImageToSeries() should throw exception when dto is null"() {
 		when:
-		service.addImageToSeries(null, series, user)
-
+			service.addImageToSeries(null, series, user)
 		then:
-		thrown IllegalArgumentException
+			thrown IllegalArgumentException
 	}
 
 	def "addImageToSeries() should throw exception when series is null"() {
 		when:
-		service.addImageToSeries(dto, null, user)
-
+			service.addImageToSeries(addImageForm, null, user)
 		then:
-		thrown IllegalArgumentException
+			thrown IllegalArgumentException
 	}
 
 	def "addImageToSeries() should throw exception when user is null"() {
 		when:
-		service.addImageToSeries(dto, series, null)
-
+			service.addImageToSeries(addImageForm, series, null)
 		then:
-		thrown IllegalArgumentException
+			thrown IllegalArgumentException
 	}
 
 	//
