@@ -551,6 +551,20 @@ class SeriesServiceImplTest extends Specification {
 			thrown IllegalArgumentException
 	}
 
+	def "addImageToSeries() should pass image to image service"() {
+		given:
+			addImageForm.setImage(multipartFile)
+		and:
+			seriesDao.save(_ as Series) >> TestObjects.createSeries()
+		when:
+			service.addImageToSeries(addImageForm, series, user)
+		then:
+			1 * imageService.save({ MultipartFile passedFile ->
+				assert passedFile == multipartFile
+				return true
+			}) >> TestObjects.createImage()
+	}
+
 	//
 	// Tests for countAll()
 	//
